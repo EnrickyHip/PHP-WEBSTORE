@@ -1,0 +1,4 @@
+.env
+database/schema
+database/inserts.sql
+/vendor/

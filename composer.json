@@ -1,0 +1,19 @@
+{
+    "name": "enricky/webstore",
+    "description": "A PHP webstore",
+    "type": "website",
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Enricky\\Webstore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Enricky Hipólito",
+            "email": "enricky.hipolito@gmail.com"
+        }
+    ]
+}
