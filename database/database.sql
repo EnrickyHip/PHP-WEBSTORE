@@ -242,7 +242,8 @@ VALUES
 ("Em deslocamento"),
 ("Saindo para entrega"),
 ("Entregue"),
-("Reembolsado");
+("Reembolsado"),
+("Cancelado");
 
 
 CREATE TABLE IF NOT EXISTS `order` (

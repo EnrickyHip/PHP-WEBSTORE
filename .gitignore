@@ -2,3 +2,4 @@
 database/schema
 database/inserts.sql
 /vendor/
+node_modules
