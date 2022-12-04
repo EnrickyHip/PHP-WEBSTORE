@@ -1,9 +1,10 @@
 /* MAIN */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Zen+Dots&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 html {
@@ -13,4 +14,28 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: 'Lucida Sans';
+}
+
+a {
+  text-decoration: none;
+  color: rgb(221, 221, 221);
+}
+
+input {
+  padding: 1rem 1rem;
+  width: 30%;
+  margin: 0.5rem; 
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+input:focus {
+  box-shadow: 0 0 0.4rem 0.4rem rgba(119, 119, 119, 0.7);
+}
+
+.clickable {
+  cursor: pointer;
 }

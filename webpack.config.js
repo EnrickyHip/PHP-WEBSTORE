@@ -3,13 +3,19 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./frontend/src/index.ts",
+  entry: {
+    header: "./frontend/src/header"
+  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: ["ts-loader"],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -17,7 +23,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "public", "assets", "js"),
   },
   devtool: "source-map",

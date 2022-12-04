@@ -1,0 +1,30 @@
+header {
+  position: fixed;
+  background-color: rgb(33, 33, 33);
+  width: 100%;
+  padding: 1rem 3rem;
+  color: rgb(221, 221, 221);
+  font-size: 1.2rem;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#account-icon {
+  font-size: 4.2rem;
+  margin: 0 2rem;
+}
+
+#cart-icon {
+  font-size: 4rem;
+  margin: 0 2rem;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Zen Dots', 'Lucida Sans';
+}
