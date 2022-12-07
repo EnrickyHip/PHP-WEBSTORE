@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Webstore\Includes;
 
-class IncludeLoader
+class IncLoader
 {
-  public static function include(Includes $include): void
+  public static function include(Inc $include): void
   {
-    $includeName = $include->name;
+    $includeName = $include->value;
     require_once __DIR__ . "./$includeName.php";
   }
 }

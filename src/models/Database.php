@@ -20,7 +20,7 @@ class Database
 
   public static function getConnection(): PDO
   {
-    if (!isset($connection)) {
+    if (!isset(self::$connection)) {
       try {
         $dsn = 'mysql:host=' . self::HOST . ';dbname=' . self::NAME . ";charset=utf8mb4";
         $attributes = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];

@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
-use Webstore\Includes\IncludeLoader;
-use Webstore\Includes\Includes;
+use Webstore\Includes\{IncLoader, Inc};
 
-IncludeLoader::include(Includes::Head);
+IncLoader::include(Inc::Head);
 head(title: "Webstore");
 
-IncludeLoader::include(Includes::Header);
+?>
+
+<body>
+  <?php IncLoader::include(Inc::Header); ?>
+</body>
+
 
