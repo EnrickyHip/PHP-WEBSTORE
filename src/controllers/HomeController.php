@@ -1,13 +1,16 @@
 <?php
 
-declare(strict_types=1);
+  declare(strict_types=1);
 
-namespace Webstore\Controllers;
+  namespace Webstore\Controllers;
 
-class HomeController
-{
-  public static function index(): void
+  use Webstore\Views\HomeView;
+
+  class HomeController
   {
-    require_once __DIR__ . "/../views/home.php";
+    public static function index(): void
+    {
+      $homeView = new HomeView();
+      $homeView->load();
+    }
   }
-}

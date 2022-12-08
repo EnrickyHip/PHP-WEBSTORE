@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types=1);
+  declare(strict_types=1);
 
-use Webstore\Controllers\HomeController;
+  use Webstore\Controllers\HomeController;
 
-$routes = [
-  "GET" => [
-    "/" => fn() => HomeController::index(),
-  ],
-];
+  $routes = [
+    "GET" => [
+      "/" => fn() => HomeController::index(),
+    ],
+  ];
 
