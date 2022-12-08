@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `category` (`name`) VALUES 
+INSERT INTO `category` (`name`) VALUES
 ("Livros"),
 ("Roupas"),
 ("Eletrônicos");
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(3000) DEFAULT NULL,
   `quantity_available` INT NOT NULL,
-  `active` BOOLEAN NOT NULL DEFAULT FALSE,  
+  `active` BOOLEAN NOT NULL DEFAULT FALSE,
   `avarage_rating` FLOAT NOT NULL DEFAULT 0,
   `seller_id` INT NOT NULL,
   `category_id` INT DEFAULT NULL,
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `discount` (
   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `percent` TINYINT NOT NULL,
   `description` VARCHAR(255) DEFAULT NULL,
-  `initial_date` DATETIME NOT NULL DEFAULT NOW(), 
+  `initial_date` DATETIME NOT NULL DEFAULT NOW(),
   `finish_date` DATETIME NOT NULL
 );
 
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `rate` (
   `buyer_id` INT NOT NULL,
   `comment` VARCHAR(3000) DEFAULT NULL,
   `value` TINYINT NOT NULL,
-  `is_verified` BOOLEAN NOT NULL DEFAULT FALSE, 
+  `is_verified` BOOLEAN NOT NULL DEFAULT FALSE,
   UNIQUE KEY (`product_id`, `buyer_id`),
   FOREIGN KEY (`buyer_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`product_id`) REFERENCES `product`(`id`) ON DELETE CASCADE ON UPDATE CASCADE

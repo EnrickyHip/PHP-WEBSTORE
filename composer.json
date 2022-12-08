@@ -8,7 +8,12 @@
     "autoload": {
         "psr-4": {
             "Webstore\\": "src/"
-        }
+        },
+        "files": [
+          "src/includes/footer.php",
+          "src/includes/head.php",
+          "src/includes/header.php"
+        ]
     },
     "authors": [
         {

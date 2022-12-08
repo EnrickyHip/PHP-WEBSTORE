@@ -4,24 +4,28 @@
 
   namespace Webstore\Views;
 
-  use Webstore\Includes\{IncLoader, Inc};
+  use function Webstore\Includes\{includeFooter, includeHead, includeHeader};
 
   class HomeView implements View
   {
     public function load(): void
     {
-      IncLoader::include(Inc::Head);
-      head(title: "Webstore");
+      includeHead(title: "Webstore");
       ?>
 
       <body>
-        <?php IncLoader::include(Inc::Header); ?>
+        <?php includeHeader() ?>
       </body>
 
+
       <?php
+      includeFooter();
     }
 
 }
+
+?>
+
 
 
 
