@@ -2,18 +2,20 @@ export default class Dropdown {
   private open = false;
 
   constructor(private readonly dropdown: HTMLDivElement, private readonly button: HTMLElement) {
-    this.button.addEventListener("click", () => {
-      this.toggleDropdown();
+    document.addEventListener("click", (event: Event) => {
+      this.toggle(event.target as EventTarget);
     });
   }
 
-  private toggleDropdown(): void {
+  private toggle(target: EventTarget): void {
     if (this.open) {
       this.dropdown.style.display = "none";
       this.open = false;
     } else {
-      this.dropdown.style.display = "block";
-      this.open = true;
+      if (target === this.button) {
+        this.dropdown.style.display = "block";
+        this.open = true;
+      }
     }
   }
 }

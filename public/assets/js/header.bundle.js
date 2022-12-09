@@ -523,18 +523,20 @@ class Dropdown {
         this.dropdown = dropdown;
         this.button = button;
         this.open = false;
-        this.button.addEventListener("click", () => {
-            this.toggleDropdown();
+        document.addEventListener("click", (event) => {
+            this.toggle(event.target);
         });
     }
-    toggleDropdown() {
+    toggle(target) {
         if (this.open) {
             this.dropdown.style.display = "none";
             this.open = false;
         }
         else {
-            this.dropdown.style.display = "block";
-            this.open = true;
+            if (target === this.button) {
+                this.dropdown.style.display = "block";
+                this.open = true;
+            }
         }
     }
 }
