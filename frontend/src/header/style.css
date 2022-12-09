@@ -3,7 +3,7 @@ header {
   background-color: rgb(33, 33, 33);
   width: 100%;
   padding: 1rem 3rem;
-  color: rgb(221, 221, 221);
+  color: rgb(243, 243, 243);
   font-size: 1.2rem;
 }
 
@@ -27,4 +27,8 @@ header nav {
   display: flex;
   align-items: center;
   font-family: 'Zen Dots', 'Lucida Sans';
+}
+
+#search {
+  width: 30%;
 }

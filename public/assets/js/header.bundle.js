@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "header {\n  position: fixed;\n  background-color: rgb(33, 33, 33);\n  width: 100%;\n  padding: 1rem 3rem;\n  color: rgb(221, 221, 221);\n  font-size: 1.2rem;\n}\n\nheader nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n#account-icon {\n  font-size: 4.2rem;\n  margin: 0 2rem;\n}\n\n#cart-icon {\n  font-size: 4rem;\n  margin: 0 2rem;\n}\n\n#logo {\n  display: flex;\n  align-items: center;\n  font-family: 'Zen Dots', 'Lucida Sans';\n}", "",{"version":3,"sources":["webpack://./frontend/src/header/style.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iCAAiC;EACjC,WAAW;EACX,kBAAkB;EAClB,yBAAyB;EACzB,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,iBAAiB;EACjB,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,sCAAsC;AACxC","sourcesContent":["header {\n  position: fixed;\n  background-color: rgb(33, 33, 33);\n  width: 100%;\n  padding: 1rem 3rem;\n  color: rgb(221, 221, 221);\n  font-size: 1.2rem;\n}\n\nheader nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n#account-icon {\n  font-size: 4.2rem;\n  margin: 0 2rem;\n}\n\n#cart-icon {\n  font-size: 4rem;\n  margin: 0 2rem;\n}\n\n#logo {\n  display: flex;\n  align-items: center;\n  font-family: 'Zen Dots', 'Lucida Sans';\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "header {\n  position: fixed;\n  background-color: rgb(33, 33, 33);\n  width: 100%;\n  padding: 1rem 3rem;\n  color: rgb(243, 243, 243);\n  font-size: 1.2rem;\n}\n\nheader nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n#account-icon {\n  font-size: 4.2rem;\n  margin: 0 2rem;\n}\n\n#cart-icon {\n  font-size: 4rem;\n  margin: 0 2rem;\n}\n\n#logo {\n  display: flex;\n  align-items: center;\n  font-family: 'Zen Dots', 'Lucida Sans';\n}\n\n#search {\n  width: 30%;\n}\n", "",{"version":3,"sources":["webpack://./frontend/src/header/style.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iCAAiC;EACjC,WAAW;EACX,kBAAkB;EAClB,yBAAyB;EACzB,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,iBAAiB;EACjB,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,sCAAsC;AACxC;;AAEA;EACE,UAAU;AACZ","sourcesContent":["header {\n  position: fixed;\n  background-color: rgb(33, 33, 33);\n  width: 100%;\n  padding: 1rem 3rem;\n  color: rgb(243, 243, 243);\n  font-size: 1.2rem;\n}\n\nheader nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n#account-icon {\n  font-size: 4.2rem;\n  margin: 0 2rem;\n}\n\n#cart-icon {\n  font-size: 4rem;\n  margin: 0 2rem;\n}\n\n#logo {\n  display: flex;\n  align-items: center;\n  font-family: 'Zen Dots', 'Lucida Sans';\n}\n\n#search {\n  width: 30%;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -508,6 +508,59 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./frontend/src/Dropdown.ts":
+/*!**********************************!*\
+  !*** ./frontend/src/Dropdown.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+class Dropdown {
+    constructor(dropdown, button) {
+        this.dropdown = dropdown;
+        this.button = button;
+        this.open = false;
+        this.button.addEventListener("click", () => {
+            this.toggleDropdown();
+        });
+    }
+    toggleDropdown() {
+        if (this.open) {
+            this.dropdown.style.display = "none";
+            this.open = false;
+        }
+        else {
+            this.dropdown.style.display = "block";
+            this.open = true;
+        }
+    }
+}
+exports["default"] = Dropdown;
+
+
+/***/ }),
+
+/***/ "./frontend/src/header/index.ts":
+/*!**************************************!*\
+  !*** ./frontend/src/header/index.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ./style.css */ "./frontend/src/header/style.css");
+const Dropdown_1 = __importDefault(__webpack_require__(/*! ../Dropdown */ "./frontend/src/Dropdown.ts"));
+const accountIcon = document.getElementById("account-icon");
+const loginDropdownDiv = document.getElementById("login-dropdown");
+new Dropdown_1.default(loginDropdownDiv, accountIcon);
+
+
 /***/ })
 
 /******/ 	});
@@ -530,7 +583,7 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -583,19 +636,12 @@ module.exports = styleTagTransform;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-var exports = __webpack_exports__;
-/*!**************************************!*\
-  !*** ./frontend/src/header/index.ts ***!
-  \**************************************/
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__webpack_require__(/*! ./style.css */ "./frontend/src/header/style.css");
-
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./frontend/src/header/index.ts");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=header.bundle.js.map

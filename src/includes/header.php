@@ -14,9 +14,21 @@
           <input id="search" placeholder="Pesquisar"></input>
 
           <div>
-            <span id="account-icon" class="material-icons clickable">
-              account_circle
-            </span>
+            <div class="dropdown">
+              <span id="account-icon" class="material-icons clickable">
+                account_circle
+              </span>
+              <div id="login-dropdown" class="dropdown-content">
+                <ul>
+                  <li>
+                    <a href="/login">Logar</a>
+                  </li>
+                  <li>
+                    <a href="/register">Registrar</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <a href="/cart">
               <span id="cart-icon" class="material-icons">
                 shopping_cart
