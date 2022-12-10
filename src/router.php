@@ -8,6 +8,7 @@
     "GET" => [
       "/" => fn() => HomeController::index(),
       "/registrar" => fn() => RegisterController::index(),
+      "/registrar-vendedor" => fn() => RegisterController::registerSeller(),
     ],
   ];
 

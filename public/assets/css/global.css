@@ -118,7 +118,6 @@ li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 2rem;
  }
 
  .center-box .form-group input {
@@ -127,6 +126,14 @@ li {
 
  .center-box .form-group label {
   margin-right: auto;
+ }
+
+ .center-box button {
+  margin: 2rem 0;
+ }
+
+ .center-box h1 {
+  margin: 1rem 0 2rem 0;
  }
 
  button {
@@ -145,3 +152,11 @@ li {
  button.bg-white:hover {
   background-color: rgb(225, 225, 225);
  }
+
+.classic-link:hover {
+  text-decoration: underline;
+}
+
+.input-message {
+  visibility: hidden;
+}
