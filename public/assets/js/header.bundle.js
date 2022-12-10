@@ -559,8 +559,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 __webpack_require__(/*! ./style.css */ "./frontend/src/header/style.css");
 const Dropdown_1 = __importDefault(__webpack_require__(/*! ../Dropdown */ "./frontend/src/Dropdown.ts"));
 const accountIcon = document.getElementById("account-icon");
-const loginDropdownDiv = document.getElementById("login-dropdown");
-new Dropdown_1.default(loginDropdownDiv, accountIcon);
+const dropdown = document.getElementById("login-dropdown");
+new Dropdown_1.default(dropdown, accountIcon);
 
 
 /***/ })

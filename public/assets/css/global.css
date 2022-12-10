@@ -69,6 +69,10 @@ input:focus {
   background-color: rgb(232, 232, 232);
 }
 
+.dropdown-hover:hover .dropdown-content {
+  display: block;
+}
+
 li {
   list-style: none;
 }

@@ -5,6 +5,12 @@
     "require": {
         "vlucas/phpdotenv": "^5.5"
     },
+    "scripts": {
+        "dev": "php -S localhost:8000 -t public"
+    },
+    "config": {
+        "process-timeout": 0
+    },
     "autoload": {
         "psr-4": {
             "Webstore\\": "src/"
