@@ -15,6 +15,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: 'Lucida Sans';
+  background-color: rgb(243, 243, 243);
 }
 
 a {
@@ -23,7 +24,7 @@ a {
 }
 
 input {
-  padding: 1rem 1rem;
+  padding: 0.8rem 0.8rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
   outline: none;
@@ -32,7 +33,11 @@ input {
 }
 
 input:focus {
-  box-shadow: 0 0 0.2rem 0.1rem rgba(119, 119, 119, 0.7);
+  box-shadow: 0 0 0.4rem 0.2rem rgba(119, 119, 119, 0.7);
+}
+
+.logo {
+  font-family: 'Zen Dots', 'Lucida Sans';
 }
 
 .clickable {
@@ -52,7 +57,7 @@ input:focus {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 16rem;
   color: black;
   box-shadow: 0 0.2rem 0.5rem 0 rgba(0,0,0,0.2);
   z-index: 1;
@@ -76,3 +81,67 @@ input:focus {
 li {
   list-style: none;
 }
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.center-container .logo {
+  margin: 3rem;
+  color:rgb(33, 33, 33)
+}
+
+.center-box {
+  background-color: rgb(33, 33, 33);
+  border-radius: 0.5rem;
+  color: rgb(243, 243, 243);
+  padding: 2rem;
+  width: 30%;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 4rem;
+}
+
+.center-box h1 {
+  font-size: 2rem;
+}
+
+.center-box form {
+  margin: 1rem 4rem;
+}
+
+.center-box .form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+ }
+
+ .center-box .form-group input {
+  width: 100%;
+ }
+
+ .center-box .form-group label {
+  margin-right: auto;
+ }
+
+ button {
+  padding: 1.2rem;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  min-width: 10rem;
+ }
+
+ .bg-white {
+  background-color: rgb(243, 243, 243);
+ }
+
+ button.bg-white:hover {
+  background-color: rgb(225, 225, 225);
+ }

@@ -7,7 +7,7 @@
     ?>
       <header>
         <nav>
-          <a href="/" id="logo">
+          <a href="/" class="logo">
             <h1>WEBSTORE</h1>
           </a>
 
@@ -24,7 +24,7 @@
                     <a href="/login">Logar</a>
                   </li>
                   <li>
-                    <a href="/register">Registrar</a>
+                    <a href="/registrar">Registrar</a>
                   </li>
                 </ul>
               </div>
