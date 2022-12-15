@@ -8,13 +8,13 @@
 
   class RegisterController
   {
-    public static function index(): void
+    public function index(): void
     {
       $registerView = new RegisterView();
       $registerView->load();
     }
 
-    public static function registerSeller(): void
+    public function registerSeller(): void
     {
       $registerView = new RegisterSellerView();
       $registerView->load();

@@ -8,7 +8,7 @@
 
   class HomeController
   {
-    public static function index(): void
+    public function index(): void
     {
       $homeView = new HomeView();
       $homeView->load();

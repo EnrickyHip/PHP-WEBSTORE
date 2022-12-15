@@ -4,11 +4,14 @@
 
   use Webstore\Controllers\{HomeController, RegisterController};
 
+  $homeController = new HomeController();
+  $registerController = new RegisterController();
+
   $routes = [
     "GET" => [
-      "/" => fn() => HomeController::index(),
-      "/registrar" => fn() => RegisterController::index(),
-      "/registrar-vendedor" => fn() => RegisterController::registerSeller(),
+      "/" => fn() => $homeController->index(),
+      "/registrar" => fn() => $registerController->index(),
+      "/registrar-vendedor" => fn() => $registerController->registerSeller(),
     ],
   ];
 
