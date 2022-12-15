@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `SKU` VARCHAR(50) NOT NULL,
   `UPC` VARCHAR(50) NOT NULL,
-  `current_price` FLOAT NOT NULL,
+  `current_price` DECIMAL NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(3000) DEFAULT NULL,
   `quantity_available` INT NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `attribute_product_value` (
 CREATE TABLE IF NOT EXISTS `price` (
   `product_id` INT NOT NULL,
   `initial_date` DATETIME NOT NULL DEFAULT NOW(),
-  `value` FLOAT NOT NULL,
+  `value` DECIMAL NOT NULL,
   PRIMARY KEY (`product_id`, `initial_date`),
   FOREIGN KEY (`product_id`) REFERENCES `product`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -248,9 +248,9 @@ VALUES
 
 CREATE TABLE IF NOT EXISTS `order` (
   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `total_price` FLOAT NOT NULL,
+  `total_price` DECIMAL NOT NULL,
   `current_status_id` INT NOT NULL,
-  `shipping_cost` FLOAT NOT NULL,
+  `shipping_cost` DECIMAL NOT NULL,
   `payment_type` ENUM("pix", "card") NOT NULL,
   `number_of_installments` TINYINT DEFAULT NULL,
   `buyer_id` INT NOT NULL,
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `order_product` (
   `product_id` INT NOT NULL,
   `order_id` INT NOT NULL,
   `quantity` SMALLINT NOT NULL DEFAULT 1,
-  `price` FLOAT NOT NULL,
+  `price` DECIMAL NOT NULL,
   `is_gift` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`product_id`, `order_id`),
   FOREIGN KEY (`product_id`) REFERENCES `product`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
