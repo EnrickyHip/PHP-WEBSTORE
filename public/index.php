@@ -5,7 +5,7 @@
   session_start();
 
   require_once __DIR__ . "/../vendor/autoload.php";
-  require_once __DIR__ . "/../src/routes/index.php";
+  require_once __DIR__ . "/../src/router/index.php";
 
   try {
     $uri = parse_url($_SERVER["REQUEST_URI"])["path"];

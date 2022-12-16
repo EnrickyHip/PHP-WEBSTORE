@@ -2,9 +2,7 @@
 
   declare(strict_types=1);
 
-  namespace Webstore\Routes;
-
-  use Webstore\Controllers\ControllerInterface;
+  namespace Webstore\Router;
 
   abstract class Routes implements RoutesInterface
   {

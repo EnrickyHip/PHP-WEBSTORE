@@ -2,8 +2,8 @@
 
   declare(strict_types=1);
 
-  use Webstore\Routes\HomeRoutes;
-  use Webstore\Routes\RegisterRoutes;
+  use Webstore\Router\Routes\HomeRoutes;
+  use Webstore\Router\Routes\RegisterRoutes;
 
   $homeRoutes = new HomeRoutes();
   $registerRoutes = new RegisterRoutes();

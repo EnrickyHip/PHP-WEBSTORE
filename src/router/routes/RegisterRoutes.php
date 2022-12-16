@@ -2,10 +2,12 @@
 
   declare(strict_types=1);
 
-  namespace Webstore\Routes;
+  namespace Webstore\Router\Routes;
 
   use Webstore\Controllers\RegisterController;
-  use Webstore\Routes\RequestMethod;
+  use Webstore\Router\RequestMethod;
+  use Webstore\Router\Route;
+  use Webstore\Router\Routes;
 
   class RegisterRoutes extends Routes
   {

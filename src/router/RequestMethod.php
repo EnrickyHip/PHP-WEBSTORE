@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-  namespace Webstore\Routes;
+  namespace Webstore\Router;
 
   enum RequestMethod: string
   {
