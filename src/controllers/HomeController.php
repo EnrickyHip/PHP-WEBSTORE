@@ -6,7 +6,7 @@
 
   use Webstore\Views\HomeView;
 
-  class HomeController
+  class HomeController implements ControllerInterface
   {
     public function index(): void
     {

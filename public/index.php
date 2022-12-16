@@ -5,19 +5,27 @@
   session_start();
 
   require_once __DIR__ . "/../vendor/autoload.php";
-  require_once __DIR__ . "/../src/router.php";
+  require_once __DIR__ . "/../src/routes/index.php";
 
   try {
     $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-    if (!isset($routes[$requestMethod][$uri])) {
+    $foundRoute = null;
+
+    foreach ($routes as $route) {
+      if ($uri === $route->getUri()) {
+        $foundRoute = $route;
+      }
+    }
+
+    if ($foundRoute === null) {
       http_response_code(404);
       require_once __DIR__ . "/../src/views/404.php";
       exit;
     }
 
-    $controller = $routes[$requestMethod][$uri];
+    $controller = $foundRoute->getControllerMethod();
     $controller();
   } catch (\Exception $error) {
     throw $error->getMessage();
