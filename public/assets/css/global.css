@@ -159,4 +159,8 @@ li {
 
 .input-message {
   visibility: hidden;
+  font-size: 1.15rem;
+  color: rgb(231, 95, 95);
+  margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
 }

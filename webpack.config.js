@@ -4,7 +4,8 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: {
-    header: "./frontend/src/header"
+    header: "./frontend/src/header",
+    register: "./frontend/src/register",
   },
   module: {
     rules: [
