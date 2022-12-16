@@ -7,7 +7,7 @@
   interface RoutesInterface
   {
     /**
-     * @return Route[]
+     * @return RouteInterface[]
      */
     function getRoutes(): array;
   }

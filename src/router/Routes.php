@@ -7,11 +7,11 @@
   abstract class Routes implements RoutesInterface
   {
     /**
-     * @var Route[] $routes
+     * @var RouteInterface[] $routes
      */
     protected array $routes = [];
     /**
-     * @return Route[]
+     * @return RouteInterface[]
      */
     public function getRoutes(): array {
       return $this->routes;
