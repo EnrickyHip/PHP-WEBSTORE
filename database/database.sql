@@ -39,6 +39,7 @@ INSERT INTO `state` (`name`, `abbreviation`) VALUES
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `slug` CHAR(32) NOT NULL,
   `email` VARCHAR(255) NOT NULL UNIQUE KEY,
   `password_hash` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
@@ -50,13 +51,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `cpf` CHAR(11) DEFAULT NULL UNIQUE KEY, -- exclusivo para clientes, vendedores físicos e entregadores e obrigatório para todos estes.
   `foundation_date` DATE DEFAULT NULL, -- exclusivo para vendedores jurídicos e obrigatório para estes.
   `cnpj` CHAR(14) DEFAULT NULL UNIQUE KEY, -- exclusivo para vendedores jurídicos e obrigatório para estes.
-  `active` BOOLEAN NOT NULL DEFAULT TRUE,
+  `active` BOOLEAN NOT NULL DEFAULT FALSE,
   `is_buyer` BOOLEAN NOT NULL,
   `is_seller` BOOLEAN NOT NULL,
   `is_delivery` BOOLEAN NOT NULL,
   `user_type` ENUM("PERSON", "COMPANY") NOT NULL,
   `created_at` DATETIME NOT NULL DEFAULT NOW(),
-  `updated_at` DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW()
+  `updated_at` DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `deleted_at` DATETIME DEFAULT NULL
 );
 
 -- contatos são exclusivos para empresas
