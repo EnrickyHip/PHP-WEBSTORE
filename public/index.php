@@ -2,6 +2,8 @@
 
   declare(strict_types=1);
 
+  use Webstore\Router\ControllerRoutes;
+
   session_start();
 
   require_once __DIR__ . "/../vendor/autoload.php";
@@ -12,6 +14,7 @@
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
     $foundRoute = null;
+    $routes = ControllerRoutes::getAllRoutes();
 
     foreach ($routes as $route) {
       if ($uri === $route->getUri()) {

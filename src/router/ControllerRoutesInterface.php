@@ -4,7 +4,7 @@
 
   namespace Webstore\Router;
 
-  interface RoutesInterface
+  interface ControllerRoutesInterface
   {
     /**
      * @return RouteInterface[]
