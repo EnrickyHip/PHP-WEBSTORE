@@ -6,7 +6,7 @@ namespace Webstore\Controllers;
 
 use Webstore\Repositories\UserRepository;
 
-class UserController
+class UserController extends BaseController
 {
   private $repository;
 
@@ -19,19 +19,17 @@ class UserController
   {
     try {
       if (!isset($_POST["email"])) {
-        echo json_encode(["error" => "Requisição Inválida"]);
-        http_response_code(400);
+        $this->sendOutput(["error" => "Requisição Inválida"], 400);
         return;
       }
 
       $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-      $user = $this->repository->getBy('email', $email);
+      $users = $this->repository->getBy('email', $email);
 
-      $exists = $user !== null;
-      echo json_encode($exists);
+      $exists = $users !== null;
+      $this->sendOutput($exists, 200);
     } catch (\Exception $e) {
-      echo json_encode(["error" => "Algo deu errado! tente novamente."]);
-      http_response_code(500);
+      $this->sendOutput(["error" => "Algo deu errado! tente novamente."], 500);
     }
   }
 }

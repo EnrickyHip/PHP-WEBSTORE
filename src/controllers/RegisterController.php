@@ -6,7 +6,7 @@ namespace Webstore\Controllers;
 
 use Webstore\Views\{RegisterView, RegisterSellerView};
 
-class RegisterController
+class RegisterController extends BaseController
 {
   public function index(): void
   {

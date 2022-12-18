@@ -23,7 +23,7 @@ class UserRepository
    */
   public function getBy(string $column, mixed $value): array | null
   {
-    $sql = "SELECT `id`, `name`, `slug`, `email`, `profile_image` FROM `user` WHERE $column = ?;";
+    $sql = "SELECT `id`, `name`, `slug`, `email`, `profile_image` AS profileImage FROM `user` WHERE $column = ?;";
     $query = $this->connection->prepare($sql);
     $query->execute([$value]);
 
@@ -31,20 +31,6 @@ class UserRepository
       return null;
     }
 
-    $usersAssoc = $query->fetchAll(PDO::FETCH_ASSOC);
-    $users = [];
-
-    foreach($usersAssoc as $userAssoc) {
-      $id = $userAssoc["id"];
-      $name = $userAssoc["name"];
-      $slug = $userAssoc["slug"];
-      $email = $userAssoc["email"];
-      $profileImage = $userAssoc["profile_image"];
-
-      $user = new User($id, $name, $slug, $email, $profileImage);
-      array_push($users, $user);
-    }
-
-    return $users;
+    return $query->fetchAll(PDO::FETCH_CLASS, User::class);
   }
 }
