@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Webstore\Router\ControllerRoutes;
+use Webstore\Router\Routes;
 
 session_start();
 
@@ -18,7 +18,7 @@ try {
   }
 
   $foundRoute = null;
-  $routes = ControllerRoutes::getAllRoutes();
+  $routes = Routes::getRoutes();
 
   foreach ($routes as $route) {
     if ($uri === $route->getUri()) {
