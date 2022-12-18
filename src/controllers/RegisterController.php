@@ -6,7 +6,7 @@
 
   use Webstore\Views\{RegisterView, RegisterSellerView};
 
-  class RegisterController implements ControllerInterface
+  class RegisterController
   {
     public function index(): void
     {

@@ -1,21 +1,21 @@
 interface RegisterInterface {
-  validate(): boolean;
+  validate(): Promise<boolean> | boolean;
 }
 
 interface UserRegisterInterface extends RegisterInterface {
   validateName(): boolean;
-  validateEmail(): boolean;
+  validateEmail(): Promise<boolean>;
   validatePassword(): boolean;
 }
 
-export interface BuyerRegisterInterface extends UserRegisterInterface {
-  validateCpf(): boolean;
+export interface PersonRegisterInterface extends UserRegisterInterface {
+  validateCpf(): Promise<boolean>;
 }
 
 export interface SellerRegisterInterface extends UserRegisterInterface {
   validateWebsite(): boolean;
 }
 
-export interface CompanyRegisterInterface extends UserRegisterInterface, SellerRegisterInterface {
-  validateCnpj(): boolean;
+export interface CompanyRegisterInterface extends SellerRegisterInterface {
+  validateCnpj(): Promise<boolean>;
 }

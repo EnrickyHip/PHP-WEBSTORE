@@ -1,7 +1,8 @@
-import { BuyerRegisterInterface } from "./interfaces";
+import { PersonRegisterInterface } from "./interfaces";
 import validator from "validator";
+import axios from "axios";
 
-export class BuyerRegister implements BuyerRegisterInterface {
+export class BuyerRegister implements PersonRegisterInterface {
   private readonly nameInput = document.getElementById("register-name") as HTMLInputElement;
   private readonly emailInput = document.getElementById("register-email") as HTMLInputElement;
   private readonly cpfInput = document.getElementById("register-cpf") as HTMLInputElement;
@@ -23,8 +24,8 @@ export class BuyerRegister implements BuyerRegisterInterface {
       }
     });
 
-    this.emailInput.addEventListener("blur", () => {
-      if (this.validateName()) {
+    this.emailInput.addEventListener("blur", async () => {
+      if (await this.validateEmail()) {
         this.emailMessage.style.visibility = "hidden";
       } else {
         this.emailMessage.style.visibility = "visible";
@@ -32,31 +33,55 @@ export class BuyerRegister implements BuyerRegisterInterface {
     });
   }
 
-  public validate(): boolean {
+  public async validate(): Promise<boolean> {
     return false;
   }
 
-  validateEmail(): boolean {
+  public async validateEmail(): Promise<boolean> {
     const { value } = this.emailInput;
-    if (!validator.isEmail(value)) {
+    if (value && !validator.isEmail(value)) {
+      this.emailMessage.innerHTML = "Email inválido";
+      return false;
+    }
+
+    if (await this.emailExists(value)) {
+      this.emailMessage.innerHTML = "Email já existente";
       return false;
     }
 
     return true;
   }
-  validateCpf(): boolean {
+
+  public async validateCpf(): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
+
   validatePassword(): boolean {
     throw new Error("Method not implemented.");
   }
 
   public validateName(): boolean {
-    if (!this.nameInput.value.match(/^[a-zA-Z À-ú]+$/i)) {
+    const { value } = this.nameInput;
+    if (value && !value.match(/^[A-z À-ú]+$/i)) {
       this.nameMessage.innerHTML = "Nome não pode conter caractéres inválidos e números";
       return false;
     }
 
     return true;
+  }
+
+  private async emailExists(email: string): Promise<boolean> {
+    try {
+      const response = await axios<boolean>({
+        method: "post",
+        url: "/user/exists-email",
+        data: { email },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.log("Ocorreu um erro inesperado.");
+      return false;
+    }
   }
 }

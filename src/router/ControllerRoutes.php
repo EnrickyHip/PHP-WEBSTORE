@@ -9,12 +9,12 @@
     /**
      * @var RouteInterface[] $routes
      */
-    protected static array $allRoutes = [];
+    protected array $routes = [];
 
     /**
      * @var RouteInterface[] $routes
      */
-    protected array $routes = [];
+    protected static array $allRoutes = [];
 
     /**
      * @return RouteInterface[]

@@ -13,6 +13,10 @@
     $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
+    if ($requestMethod === "POST") {
+      $_POST = json_decode(file_get_contents("php://input"), true);
+    }
+
     $foundRoute = null;
     $routes = ControllerRoutes::getAllRoutes();
 
