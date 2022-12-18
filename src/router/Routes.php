@@ -9,19 +9,19 @@ class Routes
   /**
    * @var RouteInterface[] $routes
    */
-  protected static array $routes = [];
+  private static array $routes = [];
 
-  public static function add(ControllerRoutesInterface ...$routesParams): void
+  public static function add(RouteInterface ...$routes): void
   {
-    foreach($routesParams as $route) {
-      array_push(self::$routes, ...$route->getRoutes());
+    foreach($routes as $route) {
+      array_push(self::$routes, $route);
     }
   }
 
   /**
    * @return RouteInterface[]
    */
-  public static function getRoutes(): array
+  public static function getAll(): array
   {
     return self::$routes;
   }

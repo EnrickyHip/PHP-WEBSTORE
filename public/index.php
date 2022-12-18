@@ -18,7 +18,7 @@ try {
   }
 
   $foundRoute = null;
-  $routes = Routes::getRoutes();
+  $routes = Routes::getAll();
 
   foreach ($routes as $route) {
     if ($uri === $route->getUri()) {
