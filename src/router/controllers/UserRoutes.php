@@ -11,11 +11,13 @@ use Webstore\Router\ControllerRoutes;
 
 class UserRoutes extends ControllerRoutes
 {
+  private UserController $controller;
+
   public function __construct()
   {
-    $controller = new UserController();
+    $this->controller = new UserController();
     $this->routes = [
-      new Route("/user/exists-email", RequestMethod::POST, fn() => $controller->checkEmailExists()),
+      new Route("/user/exists-email", RequestMethod::POST, fn() => $this->controller->checkEmailExists()),
     ];
   }
 }

@@ -11,11 +11,13 @@ use Webstore\Router\ControllerRoutes;
 
 class HomeRoutes extends ControllerRoutes
 {
+  private HomeController $controller;
+
   public function __construct()
   {
-    $controller = new HomeController();
+    $this->controller = new HomeController();
     $this->routes = [
-      new Route("/", RequestMethod::GET, fn() => $controller->index()),
+      new Route("/", RequestMethod::GET, fn() => $this->controller->index()),
     ];
   }
 }
