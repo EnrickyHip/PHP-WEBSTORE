@@ -1,26 +1,26 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Views;
+namespace Webstore\Views;
 
-  use function Webstore\Includes\{includeFooter, includeHead, includeHeader};
+use function Webstore\Includes\{includeFooter, includeHead, includeHeader};
 
-  class HomeView implements View
+class HomeView implements View
+{
+  public function load(): void
   {
-    public function load(): void
-    {
-      includeHead(title: "Webstore");
-      ?>
+    includeHead(title: "Webstore");
+    ?>
 
-      <body>
-        <?php includeHeader() ?>
-      </body>
+    <body>
+      <?php includeHeader() ?>
+    </body>
 
 
-      <?php
-      includeFooter();
-    }
+    <?php
+    includeFooter();
+  }
 
 }
 

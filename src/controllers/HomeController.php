@@ -1,16 +1,16 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Controllers;
+namespace Webstore\Controllers;
 
-  use Webstore\Views\HomeView;
+use Webstore\Views\HomeView;
 
-  class HomeController
+class HomeController
+{
+  public function index(): void
   {
-    public function index(): void
-    {
-      $homeView = new HomeView();
-      $homeView->load();
-    }
+    $homeView = new HomeView();
+    $homeView->load();
   }
+}

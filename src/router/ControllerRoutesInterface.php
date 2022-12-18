@@ -1,13 +1,13 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Router;
+namespace Webstore\Router;
 
-  interface ControllerRoutesInterface
-  {
-    /**
-     * @return RouteInterface[]
-     */
-    function getRoutes(): array;
-  }
+interface ControllerRoutesInterface
+{
+  /**
+   * @return RouteInterface[]
+   */
+  function getRoutes(): array;
+}

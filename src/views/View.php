@@ -1,10 +1,10 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Views;
+namespace Webstore\Views;
 
-  interface View
-  {
-    public function load(): void;
-  }
+interface View
+{
+  public function load(): void;
+}

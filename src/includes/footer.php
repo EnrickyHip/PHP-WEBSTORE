@@ -2,9 +2,9 @@
 
 namespace Webstore\Includes;
 
-  function includeFooter(): void
-  {
-    ?>
-      </html>
-    <?php
-  }
+function includeFooter(): void
+{
+  ?>
+    </html>
+  <?php
+}

@@ -1,14 +1,14 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Router;
+namespace Webstore\Router;
 
-  use Closure;
+use Closure;
 
-  interface RouteInterface
-  {
-    function getUri(): string;
-    function getRequestMethod(): RequestMethod;
-    function getControllerMethod(): Closure;
-  }
+interface RouteInterface
+{
+  function getUri(): string;
+  function getRequestMethod(): RequestMethod;
+  function getControllerMethod(): Closure;
+}

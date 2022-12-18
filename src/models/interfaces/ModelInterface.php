@@ -1,11 +1,11 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Models\Interfaces;
+namespace Webstore\Models\Interfaces;
 
-  interface ModelInterface {
-    function getId(): int;
-  }
+interface ModelInterface {
+  function getId(): int;
+}
 
 

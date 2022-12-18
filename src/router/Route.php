@@ -1,31 +1,31 @@
 <?php
 
-  declare(strict_types=1);
+declare(strict_types=1);
 
-  namespace Webstore\Router;
+namespace Webstore\Router;
 
-  use Closure;
+use Closure;
 
-  class Route implements RouteInterface
+class Route implements RouteInterface
+{
+  public function __construct(
+    private string $uri,
+    private RequestMethod $requestMethod,
+    private Closure $controllerMethod
+    ) {}
+
+  public function getUri(): string
   {
-    public function __construct(
-      private string $uri,
-      private RequestMethod $requestMethod,
-      private Closure $controllerMethod
-      ) {}
-
-    public function getUri(): string
-    {
-      return $this->uri;
-    }
-
-    public function getRequestMethod(): RequestMethod
-    {
-      return $this->requestMethod;
-    }
-
-    public function getControllerMethod(): Closure
-    {
-      return $this->controllerMethod;
-    }
+    return $this->uri;
   }
+
+  public function getRequestMethod(): RequestMethod
+  {
+    return $this->requestMethod;
+  }
+
+  public function getControllerMethod(): Closure
+  {
+    return $this->controllerMethod;
+  }
+}
