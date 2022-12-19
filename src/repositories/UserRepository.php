@@ -18,9 +18,7 @@ class UserRepository
     $this->connection = Database::getConnection();
   }
 
-  /**
-   * @return UserInterface[] | null
-   */
+  /** @return UserInterface[] | null */
   public function getBy(string $column, mixed $value): array | null
   {
     $sql = "SELECT `id`, `name`, `slug`, `email`, `profile_image` AS profileImage FROM `user` WHERE $column = ?;";

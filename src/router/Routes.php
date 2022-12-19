@@ -6,9 +6,7 @@ namespace Webstore\Router;
 
 class Routes
 {
-  /**
-   * @var RouteInterface[] $routes
-   */
+  /** @var RouteInterface[] $routes */
   private static array $routes = [];
 
   public static function add(RouteInterface ...$routes): void
@@ -18,9 +16,7 @@ class Routes
     }
   }
 
-  /**
-   * @return RouteInterface[]
-   */
+  /** @return RouteInterface[] */
   public static function getAll(): array
   {
     return self::$routes;
