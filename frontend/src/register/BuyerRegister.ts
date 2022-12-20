@@ -10,7 +10,7 @@ export class BuyerRegister implements PersonRegisterInterface {
   private readonly emailInput = new ValidableInput("register-email", "register-email-message");
   private readonly cpfInput = new ValidableInput("register-cpf", "register-cpf-message", cpfMask);
   private readonly passwordInput = new ValidableInput("register-password", "register-password-message");
-  private readonly confirmInput = new ValidableInput("register-confirm-password", "register-confirm-passowrd-message");
+  private readonly confirmInput = new ValidableInput("register-confirm-password", "register-confirm-password-message");
 
   constructor() {
     this.nameInput.input.addEventListener("blur", () => this.validateName());

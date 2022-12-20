@@ -1,13 +1,13 @@
 import { Mask } from "./masks/Mask";
 
 export class Input {
-  protected _input: HTMLInputElement;
+  protected readonly _input: HTMLInputElement;
 
   constructor(inputId: string, mask?: Mask) {
     const input = document.getElementById(inputId);
 
     if (input === null || !(input instanceof HTMLInputElement)) {
-      throw new Error(`Input of id ${inputId} does not exists!`);
+      throw new Error(`Input of id "${inputId}" does not exists!`);
     }
 
     this._input = input;

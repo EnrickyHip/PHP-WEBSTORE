@@ -2,20 +2,26 @@ import { Input } from "./Input";
 import { Mask } from "./masks/Mask";
 
 export class ValidableInput extends Input {
-  private messageElement: HTMLSpanElement;
+  private readonly messageSpan: HTMLSpanElement;
 
-  constructor(inputId: string, messageElementId: string, mask?: Mask) {
+  constructor(inputId: string, messageSpanId: string, mask?: Mask) {
     super(inputId, mask);
-    this.messageElement = document.getElementById(messageElementId) as HTMLSpanElement;
+    const messageSpan = document.getElementById(messageSpanId) as HTMLSpanElement;
+
+    if (messageSpan === null || !(messageSpan instanceof HTMLSpanElement)) {
+      throw new Error(`Span of id "${messageSpanId}" does not exists!`);
+    }
+
+    this.messageSpan = messageSpan;
   }
 
-  public invalidate(message: string) {
-    this.messageElement.innerHTML = message;
-    this.messageElement.style.visibility = "visible";
+  public invalidate(message: string): void {
+    this.messageSpan.innerHTML = message;
+    this.messageSpan.style.visibility = "visible";
   }
 
-  public validate() {
-    this.messageElement.style.visibility = "hidden";
-    this.messageElement.innerHTML = "";
+  public validate(): void {
+    this.messageSpan.style.visibility = "hidden";
+    this.messageSpan.innerHTML = "";
   }
 }
