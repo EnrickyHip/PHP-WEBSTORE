@@ -1,73 +1,67 @@
 import { PersonRegisterInterface } from "./interfaces";
 import validator from "validator";
 import axios from "axios";
+import Cpf from "cpf-manager";
+import { ValidableInput } from "../ValidableInput";
+import { cpfMask } from "../masks/masks";
 
 export class BuyerRegister implements PersonRegisterInterface {
-  private readonly nameInput = document.getElementById("register-name") as HTMLInputElement;
-  private readonly emailInput = document.getElementById("register-email") as HTMLInputElement;
-  private readonly cpfInput = document.getElementById("register-cpf") as HTMLInputElement;
-  private readonly passwordInput = document.getElementById("register-password") as HTMLInputElement;
-  private readonly confirmInput = document.getElementById("register-confirm-password") as HTMLInputElement;
-
-  private readonly nameMessage = document.getElementById("register-name-message") as HTMLSpanElement;
-  private readonly emailMessage = document.getElementById("register-email-message") as HTMLSpanElement;
-  private readonly cpfMessage = document.getElementById("register-cpf-message") as HTMLSpanElement;
-  private readonly passwordMessage = document.getElementById("register-password-message") as HTMLSpanElement;
-  private readonly confirmMessage = document.getElementById("register-confirm-passowrd-message") as HTMLInputElement;
+  private readonly nameInput = new ValidableInput("register-name", "register-name-message");
+  private readonly emailInput = new ValidableInput("register-email", "register-email-message");
+  private readonly cpfInput = new ValidableInput("register-cpf", "register-cpf-message", cpfMask);
+  private readonly passwordInput = new ValidableInput("register-password", "register-password-message");
+  private readonly confirmInput = new ValidableInput("register-confirm-password", "register-confirm-passowrd-message");
 
   constructor() {
-    this.nameInput.addEventListener("blur", () => {
-      if (this.validateName()) {
-        this.nameMessage.style.visibility = "hidden";
-      } else {
-        this.nameMessage.style.visibility = "visible";
-      }
-    });
-
-    this.emailInput.addEventListener("blur", async () => {
-      if (await this.validateEmail()) {
-        this.emailMessage.style.visibility = "hidden";
-      } else {
-        this.emailMessage.style.visibility = "visible";
-      }
-    });
+    this.nameInput.input.addEventListener("blur", () => this.validateName());
+    this.emailInput.input.addEventListener("blur", () => this.validateEmail());
+    this.cpfInput.input.addEventListener("blur", () => this.validateCpf());
   }
 
   public async validate(): Promise<boolean> {
     return false;
   }
 
+  public validateName(): boolean {
+    const name = this.nameInput.value;
+    if (name && !name.match(/^[A-z À-ú]+$/i)) {
+      this.nameInput.invalidate("Nome não pode conter caractéres inválidos e números");
+      return false;
+    }
+
+    this.nameInput.validate();
+    return true;
+  }
+
   public async validateEmail(): Promise<boolean> {
-    const { value } = this.emailInput;
-    if (value && !validator.isEmail(value)) {
-      this.emailMessage.innerHTML = "Email inválido";
+    const email = this.emailInput.value;
+    if (email && !validator.isEmail(email)) {
+      this.emailInput.invalidate("E-mail inválido");
       return false;
     }
 
-    if (await this.emailExists(value)) {
-      this.emailMessage.innerHTML = "Email já existente";
+    if (await this.emailExists(email)) {
+      this.emailInput.invalidate("Email já existente");
       return false;
     }
 
+    this.emailInput.validate();
     return true;
   }
 
   public async validateCpf(): Promise<boolean> {
-    throw new Error("Method not implemented.");
+    const cpf = this.cpfInput.value;
+    if (cpf && !Cpf.validate(cpf)) {
+      this.cpfInput.invalidate("CPF inválido");
+      return false;
+    }
+
+    this.cpfInput.validate();
+    return true;
   }
 
   validatePassword(): boolean {
     throw new Error("Method not implemented.");
-  }
-
-  public validateName(): boolean {
-    const { value } = this.nameInput;
-    if (value && !value.match(/^[A-z À-ú]+$/i)) {
-      this.nameMessage.innerHTML = "Nome não pode conter caractéres inválidos e números";
-      return false;
-    }
-
-    return true;
   }
 
   private async emailExists(email: string): Promise<boolean> {

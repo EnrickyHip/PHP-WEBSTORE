@@ -35,7 +35,7 @@ class RegisterView implements View
 
             <div class="form-group">
               <label for="register-cpf">CPF:</label>
-              <input type="text" name="registerCpf" id="register-cpf">
+              <input type="text" maxlength="14" name="registerCpf" id="register-cpf">
               <span id="register-cpf-message" class="input-message"></span>
             </div>
 
