@@ -2,20 +2,27 @@ import { PersonRegisterInterface } from "./interfaces";
 import validator from "validator";
 import axios from "axios";
 import Cpf from "cpf-manager";
-import { ValidableInput } from "../ValidableInput";
 import { cpfMask } from "../masks/masks";
+import { InputFactory } from "../factories/InputFactory";
 
 export class BuyerRegister implements PersonRegisterInterface {
-  private readonly nameInput = new ValidableInput("register-name", "register-name-message");
-  private readonly emailInput = new ValidableInput("register-email", "register-email-message");
-  private readonly cpfInput = new ValidableInput("register-cpf", "register-cpf-message", cpfMask);
-  private readonly passwordInput = new ValidableInput("register-password", "register-password-message");
-  private readonly confirmInput = new ValidableInput("register-confirm-password", "register-confirm-password-message");
+  private readonly inputFactory = new InputFactory();
+  private readonly nameInput = this.inputFactory.makeValidableInput("register-name", "register-name-message");
+  private readonly emailInput = this.inputFactory.makeValidableInput("register-email", "register-email-message");
+  private readonly cpfInput = this.inputFactory.makeValidableInput("register-cpf", "register-cpf-message", cpfMask);
+  private readonly passwordInput = this.inputFactory.makeValidableInput(
+    "register-password",
+    "register-password-message",
+  );
+  private readonly confirmInput = this.inputFactory.makeValidableInput(
+    "register-confirm-password",
+    "register-confirm-password-message",
+  );
 
   constructor() {
-    this.nameInput.input.addEventListener("blur", () => this.validateName());
-    this.emailInput.input.addEventListener("blur", () => this.validateEmail());
-    this.cpfInput.input.addEventListener("blur", () => this.validateCpf());
+    this.nameInput.this.addEventListener("blur", () => this.validateName());
+    this.emailInput.this.addEventListener("blur", () => this.validateEmail());
+    this.cpfInput.this.addEventListener("blur", () => this.validateCpf());
   }
 
   public async validate(): Promise<boolean> {
