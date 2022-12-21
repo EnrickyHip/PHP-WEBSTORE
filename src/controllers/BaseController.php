@@ -6,7 +6,7 @@ namespace Webstore\Controllers;
 
 abstract class BaseController
 {
-  protected function sendOutput(mixed $data, int $status)
+  protected function sendOutput(mixed $data, int $status): void
   {
     http_response_code($status);
     echo json_encode($data);

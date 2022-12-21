@@ -6,10 +6,11 @@ namespace Webstore\Controllers;
 
 use Webstore\Repositories\UserRepository;
 use Enricky\CpfManager\Cpf;
+use Webstore\Requests\Validator;
 
 class UserController extends BaseController
 {
-  private $repository;
+  private UserRepository $repository;
 
   public function __construct()
   {
@@ -24,7 +25,7 @@ class UserController extends BaseController
         return;
       }
 
-      $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+      $email = Validator::sanitizeEmail($_POST["email"]);
       $users = $this->repository->getBy('email', $email);
 
       $exists = $users !== null;
@@ -47,7 +48,7 @@ class UserController extends BaseController
         return;
       }
 
-      $cpf = filter_var($_POST["cpf"], FILTER_SANITIZE_SPECIAL_CHARS);
+      $cpf = Validator::sanitizeSpecialChars($_POST["cpf"]);
       $cpf = Cpf::clean_up($cpf);
       $users = $this->repository->getBy('cpf', $cpf);
 
