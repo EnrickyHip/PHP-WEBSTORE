@@ -44,17 +44,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_hash` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `profile_image` VARCHAR(255) DEFAULT "default_profile.png",
-  `cellphone` CHAR(11) DEFAULT NULL, -- exclusivo para compradores
+  `cellphone` CHAR(11) DEFAULT NULL, -- exclusivo para pessoas físicas
   `about` VARCHAR(2048) DEFAULT NULL, -- exclusivo para vendedores
   `website` VARCHAR(2048) DEFAULT NULL, -- exclusivo para vendedores
-  `birth` DATE DEFAULT NULL, -- exclusivo para clientes, vendedores físicos e entregadores e obrigatório para todos estes.
-  `cpf` CHAR(11) DEFAULT NULL UNIQUE KEY, -- exclusivo para clientes, vendedores físicos e entregadores e obrigatório para todos estes.
+  `birth` DATE DEFAULT NULL, -- exclusivo para vendedores físicos e obrigatório para todos estes.
+  `cpf` CHAR(11) DEFAULT NULL UNIQUE KEY, -- exclusivo para clientes, vendedores físicos e obrigatório para todos estes.
   `foundation_date` DATE DEFAULT NULL, -- exclusivo para vendedores jurídicos e obrigatório para estes.
   `cnpj` CHAR(14) DEFAULT NULL UNIQUE KEY, -- exclusivo para vendedores jurídicos e obrigatório para estes.
   `active` BOOLEAN NOT NULL DEFAULT FALSE,
   `is_buyer` BOOLEAN NOT NULL,
   `is_seller` BOOLEAN NOT NULL,
-  `is_delivery` BOOLEAN NOT NULL,
   `user_type` ENUM("PERSON", "COMPANY") NOT NULL,
   `created_at` DATETIME NOT NULL DEFAULT NOW(),
   `updated_at` DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW(),
