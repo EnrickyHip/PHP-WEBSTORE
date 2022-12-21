@@ -65,6 +65,11 @@ export class BuyerRegister implements PersonRegisterInterface {
       return false;
     }
 
+    if (await this.cpfExists(Cpf.cleanUp(cpf))) {
+      this.cpfInput.invalidate("CPF já cadastrado");
+      return false;
+    }
+
     this.cpfInput.validate();
     return true;
   }
@@ -105,6 +110,21 @@ export class BuyerRegister implements PersonRegisterInterface {
         method: "post",
         url: "/user/exists-email",
         data: { email },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.log("Ocorreu um erro inesperado.");
+      return false;
+    }
+  }
+
+  private async cpfExists(cpf: string): Promise<boolean> {
+    try {
+      const response = await axios<boolean>({
+        method: "post",
+        url: "/user/exists-cpf",
+        data: { cpf },
       });
 
       return response.data;

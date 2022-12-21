@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c607d5cde022875e2905ff07a0d5774",
+    "content-hash": "ed73244716f36c8c0c9d99c5040cede4",
     "packages": [
+        {
+            "name": "enricky/cpf-manager",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EnrickyHip/cpf-manager-php.git",
+                "reference": "b1773e362c1ba6591f61a8abe58c9e2a8923b0af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EnrickyHip/cpf-manager-php/zipball/b1773e362c1ba6591f61a8abe58c9e2a8923b0af",
+                "reference": "b1773e362c1ba6591f61a8abe58c9e2a8923b0af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "pestphp/pest": "^1.22"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Enricky\\CpfManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Enricky Hipólito",
+                    "email": "enricky.hipolito@gmail.com"
+                }
+            ],
+            "description": "Gerador, validador e gerenciador de CPF's para PHP",
+            "support": {
+                "issues": "https://github.com/EnrickyHip/cpf-manager-php/issues",
+                "source": "https://github.com/EnrickyHip/cpf-manager-php/tree/1.0.0"
+            },
+            "time": "2022-11-18T19:54:57+00:00"
+        },
         {
             "name": "graham-campbell/result-type",
             "version": "v1.1.0",
