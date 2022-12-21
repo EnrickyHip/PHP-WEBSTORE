@@ -21,4 +21,8 @@ export class Input implements InputInterface {
   public get this(): HTMLInputElement {
     return this._input;
   }
+
+  public isEmpty(): boolean {
+    return !this._input.value.trim();
+  }
 }

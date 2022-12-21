@@ -2,8 +2,8 @@ import { PersonRegisterInterface } from "./interfaces";
 import validator from "validator";
 import axios from "axios";
 import Cpf from "cpf-manager";
-import { cpfMask } from "../masks/masks";
-import { InputFactory } from "../factories/InputFactory";
+import { cpfMask } from "../../masks/masks";
+import { InputFactory } from "../../factories/InputFactory";
 
 export class BuyerRegister implements PersonRegisterInterface {
   private readonly inputFactory = new InputFactory();
@@ -20,20 +20,31 @@ export class BuyerRegister implements PersonRegisterInterface {
   );
 
   constructor() {
-    this.nameInput.this.addEventListener("input", () => this.validateName());
-    this.emailInput.this.addEventListener("input", () => this.validateEmail());
-    this.cpfInput.this.addEventListener("input", () => this.validateCpf());
-    this.passwordInput.this.addEventListener("input", () => this.validatePassword());
-    this.confirmInput.this.addEventListener("input", () => this.validatePassword());
+    this.nameInput.this.addEventListener("blur", () => this.validateName());
+    this.emailInput.this.addEventListener("blur", () => this.validateEmail());
+    this.cpfInput.this.addEventListener("blur", () => this.validateCpf());
+    this.passwordInput.this.addEventListener("blur", () => this.validatePassword());
+    this.confirmInput.this.addEventListener("blur", () => this.validatePassword());
   }
 
   public async validate(): Promise<boolean> {
-    return false;
+    let isValid = true;
+    !this.validateName() && (isValid = false);
+    !(await this.validateCpf()) && (isValid = false);
+    !(await this.validateEmail()) && (isValid = false);
+    !this.validatePassword() && (isValid = false);
+    return isValid;
   }
 
   public validateName(): boolean {
+    if (this.nameInput.isEmpty()) {
+      this.nameInput.invalidate("Nome não pode estar vazio!");
+      return false;
+    }
+
     const name = this.nameInput.value;
-    if (name && !name.match(/^[A-z À-ú]+$/i)) {
+
+    if (!name.match(/^[A-z À-ú]+$/i)) {
       this.nameInput.invalidate("Nome não pode conter caractéres inválidos e números");
       return false;
     }
@@ -43,8 +54,13 @@ export class BuyerRegister implements PersonRegisterInterface {
   }
 
   public async validateEmail(): Promise<boolean> {
+    if (this.emailInput.isEmpty()) {
+      this.emailInput.invalidate("Email não pode estar vazio!");
+    }
+
     const email = this.emailInput.value;
-    if (email && !validator.isEmail(email)) {
+
+    if (!validator.isEmail(email)) {
       this.emailInput.invalidate("E-mail inválido");
       return false;
     }
@@ -59,8 +75,14 @@ export class BuyerRegister implements PersonRegisterInterface {
   }
 
   public async validateCpf(): Promise<boolean> {
+    if (this.cpfInput.isEmpty()) {
+      this.cpfInput.invalidate("CPF não pode estar vazio!");
+      return false;
+    }
+
     const cpf = this.cpfInput.value;
-    if (cpf && !Cpf.validate(cpf)) {
+
+    if (!Cpf.validate(cpf)) {
       this.cpfInput.invalidate("CPF inválido");
       return false;
     }
@@ -78,24 +100,29 @@ export class BuyerRegister implements PersonRegisterInterface {
     const { value } = this.passwordInput;
     const { value: confirmValue } = this.confirmInput;
 
-    if (value && !value.match(/[a-z]/g)) {
+    if (this.passwordInput.isEmpty()) {
+      this.passwordInput.invalidate("senha não ser vazia!");
+      return false;
+    }
+
+    if (!value.match(/[a-z]/g)) {
       this.passwordInput.invalidate("senha deve conter letras minúsculas");
       return false;
     }
 
-    if (value && !value.match(/[A-Z]/g)) {
+    if (!value.match(/[A-Z]/g)) {
       this.passwordInput.invalidate("senha deve conter letras maiúsculas");
       return false;
     }
 
-    if (value && !value.match(/\d/g)) {
+    if (!value.match(/\d/g)) {
       this.passwordInput.invalidate("senha deve conter números");
       return false;
     }
 
     this.passwordInput.validate();
 
-    if (value && confirmValue && confirmValue !== value) {
+    if (confirmValue !== value) {
       this.confirmInput.invalidate("senhas não coincidem");
       return false;
     }

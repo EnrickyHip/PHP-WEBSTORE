@@ -11,11 +11,9 @@ export default class Dropdown {
     if (this.open) {
       this.dropdown.style.display = "none";
       this.open = false;
-    } else {
-      if (target === this.button) {
-        this.dropdown.style.display = "block";
-        this.open = true;
-      }
+    } else if (target === this.button) {
+      this.dropdown.style.display = "block";
+      this.open = true;
     }
   }
 }

@@ -51,7 +51,7 @@ class RegisterView implements View
               <span id="register-confirm-password-message" class="input-message"></span>
             </div>
 
-            <button class="bg-white" type="button">Registrar</button>
+            <button id="register-button" class="bg-white" type="button">Registrar</button>
             <div>
               <a class="classic-link" href="/registrar-vendedor">Deseja vender na Webstore? Clique aqui</a>
             </div>
