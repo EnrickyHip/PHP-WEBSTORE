@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Webstore\Controllers;
 
-use Webstore\Views\{RegisterView, RegisterSellerView};
+use Webstore\Views\{RegisterCompanyView, RegisterView, RegisterSellerView};
 
 class RegisterController extends BaseController
 {
@@ -17,6 +17,12 @@ class RegisterController extends BaseController
   public function registerSeller(): void
   {
     $registerView = new RegisterSellerView();
+    $registerView->load();
+  }
+
+  public function registerCompany(): void
+  {
+    $registerView = new RegisterCompanyView();
     $registerView->load();
   }
 }

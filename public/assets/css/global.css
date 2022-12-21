@@ -23,7 +23,7 @@ a {
   color: rgb(243, 243, 243);
 }
 
-input {
+input, textarea {
   padding: 0.8rem 0.8rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
@@ -118,40 +118,46 @@ li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
- }
+}
 
- .center-box .form-group input {
+.center-box .form-group input {
   width: 100%;
- }
+}
 
- .center-box .form-group label {
+.center-box .form-group textarea {
+  font-size: 1.3rem;
+  width: 100%;
+  resize: none;
+}
+
+.center-box .form-group label {
   margin-right: auto;
- }
+}
 
- .center-box button {
+.center-box button {
   margin: 2rem 0;
- }
+}
 
- .center-box h1 {
+.center-box h1 {
   margin: 1rem 0 2rem 0;
- }
+}
 
- button {
+button {
   padding: 1.2rem;
   outline: none;
   border-radius: 0.5rem;
   cursor: pointer;
   border: none;
   min-width: 10rem;
- }
+}
 
- .bg-white {
+.bg-white {
   background-color: rgb(243, 243, 243);
- }
+}
 
- button.bg-white:hover {
+button.bg-white:hover {
   background-color: rgb(225, 225, 225);
- }
+}
 
 .classic-link:hover {
   text-decoration: underline;
