@@ -7,6 +7,7 @@ export class ValidableInput extends Input {
   constructor(input: HTMLInputElement, messageSpan: HTMLSpanElement, mask?: Mask) {
     super(input, mask);
     this.messageSpan = messageSpan;
+    this.messageSpan.innerHTML = "message";
   }
 
   public invalidate(message: string): void {
@@ -16,6 +17,5 @@ export class ValidableInput extends Input {
 
   public validate(): void {
     this.messageSpan.style.visibility = "hidden";
-    this.messageSpan.innerHTML = "";
   }
 }

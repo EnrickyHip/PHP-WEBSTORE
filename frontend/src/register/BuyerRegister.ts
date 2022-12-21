@@ -20,9 +20,11 @@ export class BuyerRegister implements PersonRegisterInterface {
   );
 
   constructor() {
-    this.nameInput.this.addEventListener("blur", () => this.validateName());
-    this.emailInput.this.addEventListener("blur", () => this.validateEmail());
-    this.cpfInput.this.addEventListener("blur", () => this.validateCpf());
+    this.nameInput.this.addEventListener("input", () => this.validateName());
+    this.emailInput.this.addEventListener("input", () => this.validateEmail());
+    this.cpfInput.this.addEventListener("input", () => this.validateCpf());
+    this.passwordInput.this.addEventListener("input", () => this.validatePassword());
+    this.confirmInput.this.addEventListener("input", () => this.validatePassword());
   }
 
   public async validate(): Promise<boolean> {
@@ -67,8 +69,34 @@ export class BuyerRegister implements PersonRegisterInterface {
     return true;
   }
 
-  validatePassword(): boolean {
-    throw new Error("Method not implemented.");
+  public validatePassword(): boolean {
+    const { value } = this.passwordInput;
+    const { value: confirmValue } = this.confirmInput;
+
+    if (value && !value.match(/[a-z]/g)) {
+      this.passwordInput.invalidate("senha deve conter letras minúsculas");
+      return false;
+    }
+
+    if (value && !value.match(/[A-Z]/g)) {
+      this.passwordInput.invalidate("senha deve conter letras maiúsculas");
+      return false;
+    }
+
+    if (value && !value.match(/\d/g)) {
+      this.passwordInput.invalidate("senha deve conter números");
+      return false;
+    }
+
+    this.passwordInput.validate();
+
+    if (value && confirmValue && confirmValue !== value) {
+      this.confirmInput.invalidate("senhas não coincidem");
+      return false;
+    }
+
+    this.confirmInput.validate();
+    return true;
   }
 
   private async emailExists(email: string): Promise<boolean> {
