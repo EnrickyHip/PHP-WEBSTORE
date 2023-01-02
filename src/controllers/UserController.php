@@ -49,7 +49,7 @@ class UserController extends BaseController
       }
 
       $cpf = Validator::sanitizeSpecialChars($_POST["cpf"]);
-      $cpf = Cpf::clean_up($cpf);
+      $cpf = Cpf::cleanUp($cpf);
       $users = $this->repository->getBy('cpf', $cpf);
 
       $exists = $users !== null;

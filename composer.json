@@ -4,7 +4,7 @@
     "type": "website",
     "require": {
         "vlucas/phpdotenv": "^5.5",
-        "enricky/cpf-manager": "^1.0"
+        "enricky/cpf-manager": "^1.1"
     },
     "scripts": {
         "dev": "php -S localhost:8000 -t public"
