@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   entry: {
     header: "./frontend/src/scripts/header",
-    register: "./frontend/src/scripts/register",
+    buyerRegister: "./frontend/src/scripts/buyerRegister",
   },
   module: {
     rules: [

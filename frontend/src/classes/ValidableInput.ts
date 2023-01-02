@@ -1,7 +1,8 @@
+import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
 import { Mask } from "../masks/Mask";
 import { Input } from "./Input";
 
-export class ValidableInput extends Input {
+export class ValidableInput extends Input implements ValidableInputInterface {
   private readonly messageSpan: HTMLSpanElement;
 
   constructor(input: HTMLInputElement, messageSpan: HTMLSpanElement, mask?: Mask) {

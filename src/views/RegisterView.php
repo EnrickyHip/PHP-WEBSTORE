@@ -67,7 +67,7 @@ class RegisterView implements View
     <?php
       includeFooter();
     ?>
-      <script src="/assets/js/register.bundle.js"></script>
+      <script src="/assets/js/buyerRegister.bundle.js"></script>
     <?php
   }
 
