@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Webstore\Repositories;
 
 use PDO;
+use Webstore\Models\Columns\UserColumn;
 use Webstore\Models\Database;
 use Webstore\Models\Interfaces\UserInterface;
 use Webstore\Models\User;
@@ -19,7 +20,7 @@ class UserRepository
   }
 
   /** @return UserInterface[] | null */
-  public function getBy(string $column, mixed $value): ?array
+  public function getBy(UserColumn $column, mixed $value): ?array
   {
     $sql = "SELECT `id`, `name`, `slug`, `email`, `profile_image` AS profileImage FROM `user` WHERE $column = ?;";
     $query = $this->connection->prepare($sql);

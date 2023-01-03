@@ -7,6 +7,7 @@ namespace Webstore\Controllers;
 use Webstore\Repositories\UserRepository;
 use Enricky\CpfManager\Cpf;
 use Enricky\CnpjManager\Cnpj;
+use Webstore\Models\Columns\UserColumn;
 use Webstore\Requests\Validator;
 
 class UserController extends BaseController
@@ -27,7 +28,7 @@ class UserController extends BaseController
       }
 
       $email = Validator::sanitizeEmail($_POST["email"]);
-      $users = $this->repository->getBy('email', $email);
+      $users = $this->repository->getBy(UserColumn::Email, $email);
 
       $exists = $users !== null;
       $this->sendOutput($exists, 200);
@@ -51,7 +52,7 @@ class UserController extends BaseController
 
       $cpf = Validator::sanitizeSpecialChars($_POST["cpf"]);
       $cpf = Cpf::cleanUp($cpf);
-      $users = $this->repository->getBy('cpf', $cpf);
+      $users = $this->repository->getBy(UserColumn::Cpf, $cpf);
 
       $exists = $users !== null;
       $this->sendOutput($exists, 200);
@@ -75,7 +76,7 @@ class UserController extends BaseController
 
       $cnpj = Validator::sanitizeSpecialChars($_POST["cnpj"]);
       $cnpj = Cnpj::cleanUp($cnpj);
-      $users = $this->repository->getBy('cnpj', $cnpj);
+      $users = $this->repository->getBy(UserColumn::Cnpj, $cnpj);
 
       $exists = $users !== null;
       $this->sendOutput($exists, 200);
