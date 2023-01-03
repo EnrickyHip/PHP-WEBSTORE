@@ -1,6 +1,6 @@
-import { ValidationInterface } from "../interfaces/Registerinterfaces";
-import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
-import { CpfValidator } from "./CpfValidator";
+import { ValidationInterface } from "../../interfaces/Registerinterfaces";
+import { ValidableInputInterface } from "../../interfaces/ValidableInputInterface";
+import { CpfValidator } from "../Validators/CpfValidator";
 
 export class CpfInputValidation implements ValidationInterface {
   constructor(private cpf: ValidableInputInterface) {}

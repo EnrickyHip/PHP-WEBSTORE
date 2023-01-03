@@ -1,6 +1,6 @@
 import { InputFactory } from "../../factories/InputFactory";
 import { CompanyRegisterInterface } from "../../interfaces/Registerinterfaces";
-import { EmailInputValidation } from "../../classes/EmailInputValidation";
+import { EmailInputValidation } from "../../classes/InputValidations/EmailInputValidation";
 import { PasswordInputValidation } from "../../classes/PasswordInputValidation";
 import { CnpjInputValidation } from "../../classes/CnpjInputValidation";
 import { cnpjMask } from "../../masks/masks";

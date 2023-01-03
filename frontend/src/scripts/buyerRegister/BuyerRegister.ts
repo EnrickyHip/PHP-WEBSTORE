@@ -1,7 +1,7 @@
 import { cpfMask } from "../../masks/masks";
 import { InputFactory } from "../../factories/InputFactory";
 import { PersonRegisterInterface } from "../../interfaces/Registerinterfaces";
-import { EmailInputValidation } from "../../classes/EmailInputValidation";
+import { EmailInputValidation } from "../../classes/InputValidations/EmailInputValidation";
 import { CpfInputValidation } from "../../classes/CpfInputValidation";
 import { PasswordInputValidation } from "../../classes/PasswordInputValidation";
 

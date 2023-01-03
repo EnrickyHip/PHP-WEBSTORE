@@ -1,6 +1,6 @@
-import { ValidationInterface } from "../interfaces/Registerinterfaces";
-import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
-import { CnpjValidator } from "./CnpjValidator";
+import { ValidationInterface } from "../../interfaces/Registerinterfaces";
+import { ValidableInputInterface } from "../../interfaces/ValidableInputInterface";
+import { CnpjValidator } from "../Validators/CnpjValidator";
 
 export class CnpjInputValidation implements ValidationInterface {
   constructor(private cnpj: ValidableInputInterface) {}

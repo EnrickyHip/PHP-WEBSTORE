@@ -1,6 +1,6 @@
-import { ValidationInterface } from "../interfaces/Registerinterfaces";
-import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
-import { EmailValidator } from "./EmailValidation";
+import { ValidationInterface } from "../../interfaces/Registerinterfaces";
+import { ValidableInputInterface } from "../../interfaces/ValidableInputInterface";
+import { EmailValidator } from "../Validators/EmailValidator";
 
 export class EmailInputValidation implements ValidationInterface {
   constructor(private email: ValidableInputInterface) {}
