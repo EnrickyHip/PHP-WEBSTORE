@@ -1,7 +1,6 @@
-import axios from "axios";
-import validator from "validator";
 import { ValidationInterface } from "../interfaces/Registerinterfaces";
 import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
+import { EmailValidator } from "./EmailValidation";
 
 export class EmailInputValidation implements ValidationInterface {
   constructor(private email: ValidableInputInterface) {}
@@ -13,7 +12,7 @@ export class EmailInputValidation implements ValidationInterface {
 
     const email = this.email.value;
 
-    if (!validator.isEmail(email)) {
+    if (!EmailValidator.isEmail(email)) {
       this.email.invalidate("E-mail inválido");
       return false;
     }
@@ -27,18 +26,7 @@ export class EmailInputValidation implements ValidationInterface {
     return true;
   }
 
-  public async emailExists(): Promise<boolean> {
-    try {
-      const response = await axios<boolean>({
-        method: "post",
-        url: "/user/exists-email",
-        data: { email: this.email.value },
-      });
-
-      return response.data;
-    } catch (error) {
-      console.log("Ocorreu um erro inesperado.");
-      return false;
-    }
+  public async emailExists() {
+    return await EmailValidator.emailExists(this.email.value);
   }
 }

@@ -1,7 +1,6 @@
-import axios from "axios";
-import Cpf from "cpf-manager";
 import { ValidationInterface } from "../interfaces/Registerinterfaces";
 import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
+import { CpfValidator } from "./CpfValidator";
 
 export class CpfInputValidation implements ValidationInterface {
   constructor(private cpf: ValidableInputInterface) {}
@@ -12,32 +11,17 @@ export class CpfInputValidation implements ValidationInterface {
       return false;
     }
 
-    if (!Cpf.validate(this.cpf.value)) {
+    if (!CpfValidator.validate(this.cpf.value)) {
       this.cpf.invalidate("CPF inválido");
       return false;
     }
 
-    if (await this.cpfExists()) {
+    if (await CpfValidator.cpfExists(this.cpf.value)) {
       this.cpf.invalidate("CPF já cadastrado");
       return false;
     }
 
     this.cpf.validate();
     return true;
-  }
-
-  public async cpfExists(): Promise<boolean> {
-    try {
-      const response = await axios<boolean>({
-        method: "post",
-        url: "/user/exists-cpf",
-        data: { cpf: Cpf.cleanUp(this.cpf.value) },
-      });
-
-      return response.data;
-    } catch (error) {
-      console.log("Ocorreu um erro inesperado.");
-      return false;
-    }
   }
 }
