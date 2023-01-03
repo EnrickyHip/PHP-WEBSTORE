@@ -10,5 +10,8 @@ export const cpfMask: Mask = (value: string): string => {
 
 export const cnpjMask: Mask = (value: string): string => {
   value = value.replace(/\D/g, "");
-  return value.replace(/^(\d{2})(\d{3})?(\d{3})?(\d{4})?(\d{2})?/, "$1 $2 $3/$4-$5");
+  value = value.replace(/(\d{2})(\d)/, "$1.$2");
+  value = value.replace(/(\d{3})(\d)/, "$1.$2");
+  value = value.replace(/(\d{3})(\d)/, "$1/$2");
+  return value.replace(/(\d{4})(\d{1,2})$/, "$1-$2");
 };

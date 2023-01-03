@@ -35,9 +35,9 @@ class RegisterCompanyView implements View
             </div>
 
             <div class="form-group">
-              <label for="register-cpf">CNPJ:</label>
-              <input type="text" maxlength="14" name="registerCpf" id="register-cpf">
-              <span id="register-cpf-message" class="input-message"></span>
+              <label for="register-cnpj">CNPJ:</label>
+              <input type="text" maxlength="18" name="registerCnpj" id="register-cnpj">
+              <span id="register-cnpj-message" class="input-message"></span>
             </div>
 
             <div class="form-group">
@@ -71,9 +71,6 @@ class RegisterCompanyView implements View
             </div>
 
             <button id="register-button" class="bg-white" type="button">Registrar</button>
-            <div>
-              <a class="classic-link" href="/registrar-vendedor">Deseja vender na Webstore? Clique aqui</a>
-            </div>
             <div style="margin-top: 1rem;">
               <a href="/registrar-vendedor" class="classic-link">Voltar</a>
             </div>
@@ -84,7 +81,10 @@ class RegisterCompanyView implements View
 
 
     <?php
-    includeFooter();
+      includeFooter();
+    ?>
+      <script src="/assets/js/companyRegister.bundle.js"></script>
+    <?php
   }
 
 }

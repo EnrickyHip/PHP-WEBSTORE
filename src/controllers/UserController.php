@@ -6,6 +6,7 @@ namespace Webstore\Controllers;
 
 use Webstore\Repositories\UserRepository;
 use Enricky\CpfManager\Cpf;
+use Enricky\CnpjManager\Cnpj;
 use Webstore\Requests\Validator;
 
 class UserController extends BaseController
@@ -39,18 +40,42 @@ class UserController extends BaseController
   {
     try {
       if (!isset($_POST["cpf"])) {
-        $this->sendOutput(["error" => "Requisição Inválida"], 400);
+        $this->sendOutput(["error" => "CPF não enviado"], 400);
         return;
       }
 
       if (!Cpf::validate($_POST["cpf"])) {
-        $this->sendOutput(["error" => "Cpf Inválido!"], 400);
+        $this->sendOutput(["error" => "CPF Inválido!"], 400);
         return;
       }
 
       $cpf = Validator::sanitizeSpecialChars($_POST["cpf"]);
       $cpf = Cpf::cleanUp($cpf);
       $users = $this->repository->getBy('cpf', $cpf);
+
+      $exists = $users !== null;
+      $this->sendOutput($exists, 200);
+    } catch (\Exception $e) {
+      $this->sendOutput(["error" => "Algo deu errado! tente novamente."], 500);
+    }
+  }
+
+  public function checkCnpjExists(): void
+  {
+    try {
+      if (!isset($_POST["cnpj"])) {
+        $this->sendOutput(["error" => "CNPJ não enviado"], 400);
+        return;
+      }
+
+      if (!Cnpj::validate($_POST["cnpj"])) {
+        $this->sendOutput(["error" => "CNPJ Inválido!"], 400);
+        return;
+      }
+
+      $cnpj = Validator::sanitizeSpecialChars($_POST["cnpj"]);
+      $cnpj = Cnpj::cleanUp($cnpj);
+      $users = $this->repository->getBy('cnpj', $cnpj);
 
       $exists = $users !== null;
       $this->sendOutput($exists, 200);

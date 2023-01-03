@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eab18417c73711d5eecf4535484945b3",
+    "content-hash": "c67595da5225240cafe999fad40244c2",
     "packages": [
+        {
+            "name": "enricky/cnpj-manager",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EnrickyHip/validador-de-cnpj-php.git",
+                "reference": "624475008ee57d6da58e207ed72e9dd8216cdeda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EnrickyHip/validador-de-cnpj-php/zipball/624475008ee57d6da58e207ed72e9dd8216cdeda",
+                "reference": "624475008ee57d6da58e207ed72e9dd8216cdeda",
+                "shasum": ""
+            },
+            "require-dev": {
+                "pestphp/pest": "^1.22"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Enricky\\CnpjManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Enricky Hipólito",
+                    "email": "enricky.hipolito@gmail.com"
+                }
+            ],
+            "description": "Gerador, validador e gerenciador de CNPJ's para PHP",
+            "support": {
+                "issues": "https://github.com/EnrickyHip/validador-de-cnpj-php/issues",
+                "source": "https://github.com/EnrickyHip/validador-de-cnpj-php/tree/1.0.0"
+            },
+            "time": "2022-12-30T01:30:46+00:00"
+        },
         {
             "name": "enricky/cpf-manager",
             "version": "1.1.0",
