@@ -1,10 +1,10 @@
 import { InputFactory } from "../../factories/InputFactory";
 import { CompanyRegisterInterface } from "../../interfaces/Registerinterfaces";
-import { EmailValidation } from "../../classes/EmailValidation";
-import { PasswordValidation } from "../../classes/PasswordValidation";
-import { CnpjValidation } from "../../classes/CnpjValidation";
+import { EmailInputValidation } from "../../classes/EmailInputValidation";
+import { PasswordInputValidation } from "../../classes/PasswordInputValidation";
+import { CnpjInputValidation } from "../../classes/CnpjInputValidation";
 import { cnpjMask } from "../../masks/masks";
-import { WebsiteValidation } from "../../classes/WebsiteValidation";
+import { WebsiteInputValidation } from "../../classes/WebsiteInputValidation";
 
 export class CompanyRegister implements CompanyRegisterInterface {
   private readonly inputFactory = new InputFactory();
@@ -34,6 +34,7 @@ export class CompanyRegister implements CompanyRegisterInterface {
     this.confirmInput.this.addEventListener("input", () => this.validatePassword());
     this.dateInput.this.addEventListener("input", () => this.validateDate());
   }
+
   public async validate(): Promise<boolean> {
     let isValid = true;
     !this.validateName() && (isValid = false);
@@ -43,26 +44,6 @@ export class CompanyRegister implements CompanyRegisterInterface {
     !this.validatePassword() && (isValid = false);
     !this.validateDate() && (isValid = false);
     return isValid;
-  }
-
-  validateDate(): boolean {
-    if (this.dateInput.isEmpty()) {
-      this.dateInput.invalidate("Selecione uma data");
-      return false;
-    }
-
-    this.dateInput.validate();
-    return true;
-  }
-
-  validateCnpj(): Promise<boolean> {
-    const cnpjValidation = new CnpjValidation(this.cnpjInput);
-    return cnpjValidation.validate();
-  }
-
-  validateWebsite(): boolean {
-    const websiteValidation = new WebsiteValidation(this.websiteInput);
-    return websiteValidation.validate();
   }
 
   public validateName(): boolean {
@@ -75,13 +56,33 @@ export class CompanyRegister implements CompanyRegisterInterface {
     return true;
   }
 
+  public validateDate(): boolean {
+    if (this.dateInput.isEmpty()) {
+      this.dateInput.invalidate("Selecione uma data");
+      return false;
+    }
+
+    this.dateInput.validate();
+    return true;
+  }
+
+  public validateCnpj(): Promise<boolean> {
+    const cnpjValidation = new CnpjInputValidation(this.cnpjInput);
+    return cnpjValidation.validate();
+  }
+
+  public validateWebsite(): boolean {
+    const websiteValidation = new WebsiteInputValidation(this.websiteInput);
+    return websiteValidation.validate();
+  }
+
   public async validateEmail(): Promise<boolean> {
-    const emailValidation = new EmailValidation(this.emailInput);
+    const emailValidation = new EmailInputValidation(this.emailInput);
     return emailValidation.validate();
   }
 
   public validatePassword(): boolean {
-    const passwordValidation = new PasswordValidation(this.passwordInput, this.confirmInput);
+    const passwordValidation = new PasswordInputValidation(this.passwordInput, this.confirmInput);
     return passwordValidation.validate();
   }
 }

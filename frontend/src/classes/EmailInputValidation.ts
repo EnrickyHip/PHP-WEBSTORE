@@ -1,8 +1,9 @@
 import axios from "axios";
 import validator from "validator";
+import { ValidationInterface } from "../interfaces/Registerinterfaces";
 import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
 
-export class EmailValidation {
+export class EmailInputValidation implements ValidationInterface {
   constructor(private email: ValidableInputInterface) {}
 
   public async validate(): Promise<boolean> {

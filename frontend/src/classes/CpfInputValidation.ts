@@ -1,8 +1,9 @@
 import axios from "axios";
 import Cpf from "cpf-manager";
+import { ValidationInterface } from "../interfaces/Registerinterfaces";
 import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
 
-export class CpfValidation {
+export class CpfInputValidation implements ValidationInterface {
   constructor(private cpf: ValidableInputInterface) {}
 
   public async validate(): Promise<boolean> {

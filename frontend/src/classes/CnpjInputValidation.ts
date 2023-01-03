@@ -1,8 +1,9 @@
 import axios from "axios";
 import Cnpj from "cnpj-manager";
+import { ValidationInterface } from "../interfaces/Registerinterfaces";
 import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
 
-export class CnpjValidation {
+export class CnpjInputValidation implements ValidationInterface {
   constructor(private cnpj: ValidableInputInterface) {}
 
   public async validate(): Promise<boolean> {

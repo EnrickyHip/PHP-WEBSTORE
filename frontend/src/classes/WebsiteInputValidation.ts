@@ -1,7 +1,8 @@
 import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
 import validator from "validator";
+import { ValidationInterface } from "../interfaces/Registerinterfaces";
 
-export class WebsiteValidation {
+export class WebsiteInputValidation implements ValidationInterface {
   constructor(private website: ValidableInputInterface) {}
 
   public validate(): boolean {

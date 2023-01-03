@@ -1,9 +1,9 @@
 import { cpfMask } from "../../masks/masks";
 import { InputFactory } from "../../factories/InputFactory";
 import { PersonRegisterInterface } from "../../interfaces/Registerinterfaces";
-import { EmailValidation } from "../../classes/EmailValidation";
-import { CpfValidation } from "../../classes/CpfValidation";
-import { PasswordValidation } from "../../classes/PasswordValidation";
+import { EmailInputValidation } from "../../classes/EmailInputValidation";
+import { CpfInputValidation } from "../../classes/CpfInputValidation";
+import { PasswordInputValidation } from "../../classes/PasswordInputValidation";
 
 export class BuyerRegister implements PersonRegisterInterface {
   private readonly inputFactory = new InputFactory();
@@ -54,17 +54,17 @@ export class BuyerRegister implements PersonRegisterInterface {
   }
 
   public async validateEmail(): Promise<boolean> {
-    const emailValidation = new EmailValidation(this.emailInput);
+    const emailValidation = new EmailInputValidation(this.emailInput);
     return emailValidation.validate();
   }
 
   public async validateCpf(): Promise<boolean> {
-    const cpfValidation = new CpfValidation(this.cpfInput);
+    const cpfValidation = new CpfInputValidation(this.cpfInput);
     return await cpfValidation.validate();
   }
 
   public validatePassword(): boolean {
-    const passwordValidation = new PasswordValidation(this.passwordInput, this.confirmInput);
+    const passwordValidation = new PasswordInputValidation(this.passwordInput, this.confirmInput);
     return passwordValidation.validate();
   }
 }

@@ -1,8 +1,8 @@
-interface RegisterInterface {
+export interface ValidationInterface {
   validate(): Promise<boolean> | boolean;
 }
 
-interface UserRegisterInterface extends RegisterInterface {
+interface UserRegisterInterface extends ValidationInterface {
   validateName(): boolean;
   validateEmail(): Promise<boolean>;
   validatePassword(): boolean;
