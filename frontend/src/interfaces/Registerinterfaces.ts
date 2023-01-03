@@ -14,6 +14,7 @@ export interface PersonRegisterInterface extends UserRegisterInterface {
 
 export interface SellerRegisterInterface extends UserRegisterInterface {
   validateWebsite(): boolean;
+  validateDate(): boolean;
 }
 
 export interface CompanyRegisterInterface extends SellerRegisterInterface {

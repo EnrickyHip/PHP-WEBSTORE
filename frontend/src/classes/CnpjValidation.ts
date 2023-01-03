@@ -7,17 +7,17 @@ export class CnpjValidation {
 
   public async validate(): Promise<boolean> {
     if (this.cnpj.isEmpty()) {
-      this.cnpj.invalidate("cnpj não pode estar vazio!");
+      this.cnpj.invalidate("digite o CNPJ de sua empresa");
       return false;
     }
 
     if (!Cnpj.validate(this.cnpj.value)) {
-      this.cnpj.invalidate("cnpj inválido");
+      this.cnpj.invalidate("CNPJ inválido");
       return false;
     }
 
     if (await this.cnpjExists()) {
-      this.cnpj.invalidate("cnpj já cadastrado");
+      this.cnpj.invalidate("CNPJ já cadastrado");
       return false;
     }
 

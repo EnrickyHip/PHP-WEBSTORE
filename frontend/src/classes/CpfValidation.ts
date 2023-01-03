@@ -7,7 +7,7 @@ export class CpfValidation {
 
   public async validate(): Promise<boolean> {
     if (this.cpf.isEmpty()) {
-      this.cpf.invalidate("CPF não pode estar vazio!");
+      this.cpf.invalidate("digite seu CPF");
       return false;
     }
 

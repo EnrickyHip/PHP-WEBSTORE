@@ -4,12 +4,18 @@ import { EmailValidation } from "../../classes/EmailValidation";
 import { PasswordValidation } from "../../classes/PasswordValidation";
 import { CnpjValidation } from "../../classes/CnpjValidation";
 import { cnpjMask } from "../../masks/masks";
+import { WebsiteValidation } from "../../classes/WebsiteValidation";
 
 export class CompanyRegister implements CompanyRegisterInterface {
   private readonly inputFactory = new InputFactory();
   private readonly nameInput = this.inputFactory.makeValidableInput("register-name", "register-name-message");
   private readonly emailInput = this.inputFactory.makeValidableInput("register-email", "register-email-message");
   private readonly cnpjInput = this.inputFactory.makeValidableInput("register-cnpj", "register-cnpj-message", cnpjMask);
+  private readonly websiteInput = this.inputFactory.makeValidableInput("register-website", "register-website-message");
+  private readonly dateInput = this.inputFactory.makeValidableInput(
+    "register-foundation-date",
+    "register-foundation-date-message",
+  );
   private readonly passwordInput = this.inputFactory.makeValidableInput(
     "register-password",
     "register-password-message",
@@ -20,11 +26,33 @@ export class CompanyRegister implements CompanyRegisterInterface {
   );
 
   constructor() {
-    this.nameInput.this.addEventListener("blur", () => this.validateName());
-    this.emailInput.this.addEventListener("blur", () => this.validateEmail());
-    this.cnpjInput.this.addEventListener("blur", () => this.validateCnpj());
-    this.passwordInput.this.addEventListener("blur", () => this.validatePassword());
-    this.confirmInput.this.addEventListener("blur", () => this.validatePassword());
+    this.nameInput.this.addEventListener("input", () => this.validateName());
+    this.emailInput.this.addEventListener("input", () => this.validateEmail());
+    this.cnpjInput.this.addEventListener("input", () => this.validateCnpj());
+    this.passwordInput.this.addEventListener("input", () => this.validatePassword());
+    this.websiteInput.this.addEventListener("input", () => this.validateWebsite());
+    this.confirmInput.this.addEventListener("input", () => this.validatePassword());
+    this.dateInput.this.addEventListener("input", () => this.validateDate());
+  }
+  public async validate(): Promise<boolean> {
+    let isValid = true;
+    !this.validateName() && (isValid = false);
+    !(await this.validateEmail()) && (isValid = false);
+    !this.validateCnpj() && (isValid = false);
+    !this.validateWebsite() && (isValid = false);
+    !this.validatePassword() && (isValid = false);
+    !this.validateDate() && (isValid = false);
+    return isValid;
+  }
+
+  validateDate(): boolean {
+    if (this.dateInput.isEmpty()) {
+      this.dateInput.invalidate("Selecione uma data");
+      return false;
+    }
+
+    this.dateInput.validate();
+    return true;
   }
 
   validateCnpj(): Promise<boolean> {
@@ -33,28 +61,13 @@ export class CompanyRegister implements CompanyRegisterInterface {
   }
 
   validateWebsite(): boolean {
-    throw new Error("Method not implemented.");
-  }
-
-  public async validate(): Promise<boolean> {
-    let isValid = true;
-    !this.validateName() && (isValid = false);
-    !(await this.validateEmail()) && (isValid = false);
-    !this.validateCnpj() && (isValid = false);
-    !this.validatePassword() && (isValid = false);
-    return isValid;
+    const websiteValidation = new WebsiteValidation(this.websiteInput);
+    return websiteValidation.validate();
   }
 
   public validateName(): boolean {
     if (this.nameInput.isEmpty()) {
-      this.nameInput.invalidate("Nome não pode estar vazio!");
-      return false;
-    }
-
-    const name = this.nameInput.value;
-
-    if (!name.match(/^[A-z À-ú]+$/i)) {
-      this.nameInput.invalidate("Nome não pode conter caractéres inválidos e números");
+      this.nameInput.invalidate("Digite o nome de sua empresa");
       return false;
     }
 

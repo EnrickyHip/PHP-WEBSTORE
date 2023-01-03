@@ -20,11 +20,11 @@ export class BuyerRegister implements PersonRegisterInterface {
   );
 
   constructor() {
-    this.nameInput.this.addEventListener("blur", () => this.validateName());
-    this.emailInput.this.addEventListener("blur", () => this.validateEmail());
-    this.cpfInput.this.addEventListener("blur", () => this.validateCpf());
-    this.passwordInput.this.addEventListener("blur", () => this.validatePassword());
-    this.confirmInput.this.addEventListener("blur", () => this.validatePassword());
+    this.nameInput.this.addEventListener("input", () => this.validateName());
+    this.emailInput.this.addEventListener("input", () => this.validateEmail());
+    this.cpfInput.this.addEventListener("input", () => this.validateCpf());
+    this.passwordInput.this.addEventListener("input", () => this.validatePassword());
+    this.confirmInput.this.addEventListener("input", () => this.validatePassword());
   }
 
   public async validate(): Promise<boolean> {
@@ -38,7 +38,7 @@ export class BuyerRegister implements PersonRegisterInterface {
 
   public validateName(): boolean {
     if (this.nameInput.isEmpty()) {
-      this.nameInput.invalidate("Nome não pode estar vazio!");
+      this.nameInput.invalidate("Digite seu nome");
       return false;
     }
 

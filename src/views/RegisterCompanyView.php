@@ -42,20 +42,26 @@ class RegisterCompanyView implements View
 
             <div class="form-group">
               <label for="register-foundation-date">Data de Fundação:</label>
-              <input type="date" name="website" id="register-website-company">
-              <span id="register-website-company-message" class="input-message"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="register-url">Website:</label>
-              <input type="url" name="foundationDate" id="register-foundation-date">
+              <input type="date" name="foundation-date" id="register-foundation-date">
               <span id="register-foundation-date-message" class="input-message"></span>
             </div>
 
             <div class="form-group">
-              <label for="register-foundation-date">Sobre:</label>
-              <textarea rows="4" name="aboutCompany" id="register-about-company"></textarea>
-              <span id="register-about-company-message" class="input-message"></span>
+              <label for="register-website">
+                Website:
+                <small>(opicional)</small>
+              </label>
+              <input type="url" name="website" id="register-website">
+              <span id="register-website-message" class="input-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="register-foundation-date">
+                Sobre:
+                <small>(opicional)</small>
+              </label>
+              <textarea rows="7" name="about" id="register-about"></textarea>
+              <span id="register-about-message" class="input-message"></span>
             </div>
 
             <div class="form-group">

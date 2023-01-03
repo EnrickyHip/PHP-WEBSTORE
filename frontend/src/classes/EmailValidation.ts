@@ -7,7 +7,7 @@ export class EmailValidation {
 
   public async validate(): Promise<boolean> {
     if (this.email.isEmpty()) {
-      this.email.invalidate("Email não pode estar vazio!");
+      this.email.invalidate("digite seu E-mail");
     }
 
     const email = this.email.value;
@@ -18,7 +18,7 @@ export class EmailValidation {
     }
 
     if (await this.emailExists()) {
-      this.email.invalidate("Email já existente");
+      this.email.invalidate("E-mail já existente");
       return false;
     }
 

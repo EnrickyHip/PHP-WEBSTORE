@@ -27,7 +27,7 @@ export class PasswordValidation {
     const errors: string[] = [];
 
     if (this.password.isEmpty()) {
-      errors.push("senha não ser vazia!");
+      errors.push("digite sua senha");
     }
 
     if (value.length < 8) {

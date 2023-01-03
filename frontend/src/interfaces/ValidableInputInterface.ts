@@ -1,4 +1,6 @@
 import { InputInterface } from "./InputInterface";
-import { ValidableInterface } from "./ValidableInterface";
 
-export interface ValidableInputInterface extends InputInterface, ValidableInterface {}
+export interface ValidableInputInterface extends InputInterface {
+  validate(): void;
+  invalidate(message: string): void;
+}
