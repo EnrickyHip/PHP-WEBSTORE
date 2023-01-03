@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Webstore\Controllers;
 
 use Webstore\Repositories\UserRepository;
-use Enricky\CpfManager\Cpf;
-use Enricky\CnpjManager\Cnpj;
 use Webstore\Models\Columns\UserColumn;
+use Webstore\Requests\CnpjValidator;
+use Webstore\Requests\CpfValidator;
 use Webstore\Requests\Validator;
 
 class UserController extends BaseController
@@ -45,13 +45,13 @@ class UserController extends BaseController
         return;
       }
 
-      if (!Cpf::validate($_POST["cpf"])) {
+      if (!CpfValidator::validate($_POST["cpf"])) {
         $this->sendOutput(["error" => "CPF Inválido!"], 400);
         return;
       }
 
       $cpf = Validator::sanitizeSpecialChars($_POST["cpf"]);
-      $cpf = Cpf::cleanUp($cpf);
+      $cpf = CpfValidator::cleanUp($cpf);
       $users = $this->repository->getBy(UserColumn::Cpf, $cpf);
 
       $exists = $users !== null;
@@ -69,13 +69,13 @@ class UserController extends BaseController
         return;
       }
 
-      if (!Cnpj::validate($_POST["cnpj"])) {
+      if (!CnpjValidator::validate($_POST["cnpj"])) {
         $this->sendOutput(["error" => "CNPJ Inválido!"], 400);
         return;
       }
 
       $cnpj = Validator::sanitizeSpecialChars($_POST["cnpj"]);
-      $cnpj = Cnpj::cleanUp($cnpj);
+      $cnpj = CnpjValidator::cleanUp($cnpj);
       $users = $this->repository->getBy(UserColumn::Cnpj, $cnpj);
 
       $exists = $users !== null;
