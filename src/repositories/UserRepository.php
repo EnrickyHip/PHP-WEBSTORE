@@ -22,7 +22,8 @@ class UserRepository
   /** @return UserInterface[] | null */
   public function getBy(UserColumn $column, mixed $value): ?array
   {
-    $sql = "SELECT `id`, `name`, `slug`, `email`, `profile_image` AS profileImage FROM `user` WHERE $column = ?;";
+    $columnName = $column->value;
+    $sql = "SELECT `id`, `name`, `slug`, `email`, `profile_image` AS profileImage FROM `user` WHERE $columnName = ?;";
     $query = $this->connection->prepare($sql);
     $query->execute([$value]);
 
