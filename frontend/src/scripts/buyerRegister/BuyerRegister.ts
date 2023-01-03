@@ -2,8 +2,8 @@ import { cpfMask } from "../../masks/masks";
 import { InputFactory } from "../../factories/InputFactory";
 import { PersonRegisterInterface } from "../../interfaces/Registerinterfaces";
 import { EmailInputValidation } from "../../classes/InputValidations/EmailInputValidation";
-import { CpfInputValidation } from "../../classes/CpfInputValidation";
-import { PasswordInputValidation } from "../../classes/PasswordInputValidation";
+import { CpfInputValidation } from "../../classes/InputValidations/CpfInputValidation";
+import { PasswordInputValidation } from "../../classes/InputValidations/PasswordInputValidation";
 
 export class BuyerRegister implements PersonRegisterInterface {
   private readonly inputFactory = new InputFactory();

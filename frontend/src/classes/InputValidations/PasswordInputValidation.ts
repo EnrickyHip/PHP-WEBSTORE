@@ -1,5 +1,5 @@
-import { ValidationInterface } from "../interfaces/Registerinterfaces";
-import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
+import { ValidationInterface } from "../../interfaces/Registerinterfaces";
+import { ValidableInputInterface } from "../../interfaces/ValidableInputInterface";
 
 export class PasswordInputValidation implements ValidationInterface {
   constructor(private password: ValidableInputInterface, private confirm: ValidableInputInterface) {}

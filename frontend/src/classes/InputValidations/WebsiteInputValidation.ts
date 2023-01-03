@@ -1,6 +1,6 @@
-import { ValidableInputInterface } from "../interfaces/ValidableInputInterface";
-import { ValidationInterface } from "../interfaces/Registerinterfaces";
-import { WebsiteValidator } from "./WebsiteValidator";
+import { ValidationInterface } from "../../interfaces/Registerinterfaces";
+import { ValidableInputInterface } from "../../interfaces/ValidableInputInterface";
+import { WebsiteValidator } from "../Validators/WebsiteValidator";
 
 export class WebsiteInputValidation implements ValidationInterface {
   constructor(private website: ValidableInputInterface) {}

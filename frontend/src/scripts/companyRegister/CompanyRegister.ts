@@ -1,10 +1,10 @@
 import { InputFactory } from "../../factories/InputFactory";
 import { CompanyRegisterInterface } from "../../interfaces/Registerinterfaces";
 import { EmailInputValidation } from "../../classes/InputValidations/EmailInputValidation";
-import { PasswordInputValidation } from "../../classes/PasswordInputValidation";
-import { CnpjInputValidation } from "../../classes/CnpjInputValidation";
 import { cnpjMask } from "../../masks/masks";
-import { WebsiteInputValidation } from "../../classes/WebsiteInputValidation";
+import { CnpjInputValidation } from "../../classes/InputValidations/CnpjInputValidation";
+import { WebsiteInputValidation } from "../../classes/InputValidations/WebsiteInputValidation";
+import { PasswordInputValidation } from "../../classes/InputValidations/PasswordInputValidation";
 
 export class CompanyRegister implements CompanyRegisterInterface {
   private readonly inputFactory = new InputFactory();
