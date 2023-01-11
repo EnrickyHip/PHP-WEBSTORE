@@ -7,6 +7,7 @@ module.exports = {
     header: "./frontend/src/scripts/header",
     buyerRegister: "./frontend/src/scripts/buyerRegister",
     companyRegister: "./frontend/src/scripts/companyRegister",
+    personSellerRegister: "./frontend/src/scripts/personSellerRegister",
   },
   module: {
     rules: [

@@ -6,7 +6,7 @@ namespace Webstore\Views;
 
 use function Webstore\Includes\{includeFooter, includeHead};
 
-class RegisterCompanyView implements View
+class RegisterPersonSellerView implements View
 {
   public function load(): void
   {
@@ -20,7 +20,7 @@ class RegisterCompanyView implements View
         </a>
         <div class="center-box">
           <h1>Vender na Webstore</h1>
-          <h3>Registrar Empresa</h3>
+          <h3>Registrar Independente</h3>
           <form>
             <div class="form-group">
               <label for="register-name">Nome:</label>
@@ -35,15 +35,15 @@ class RegisterCompanyView implements View
             </div>
 
             <div class="form-group">
-              <label for="register-cnpj">CNPJ:</label>
-              <input type="text" maxlength="18" name="registerCnpj" id="register-cnpj">
-              <span id="register-cnpj-message" class="input-message"></span>
+              <label for="register-cpf">CPF:</label>
+              <input type="text" maxlength="18" name="registerCpf" id="register-cpf">
+              <span id="register-cpf-message" class="input-message"></span>
             </div>
 
             <div class="form-group">
-              <label for="register-foundation-date">Data de Fundação:</label>
-              <input type="date" name="foundation-date" id="register-foundation-date">
-              <span id="register-foundation-date-message" class="input-message"></span>
+              <label for="register-birth-date">Data de Nascimento:</label>
+              <input type="date" name="birth-date" id="register-birth-date">
+              <span id="register-birth-date-message" class="input-message"></span>
             </div>
 
             <div class="form-group">
@@ -89,7 +89,7 @@ class RegisterCompanyView implements View
     <?php
       includeFooter();
     ?>
-      <script src="/assets/js/companyRegister.bundle.js"></script>
+      <script src="/assets/js/personSellerRegister.bundle.js"></script>
     <?php
   }
 
